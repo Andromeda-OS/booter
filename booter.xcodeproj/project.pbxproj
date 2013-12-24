@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		1F3029BE186A364A009F0246 /* boot1h */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1F3029BF186A364A009F0246 /* Build configuration list for PBXAggregateTarget "boot1h" */;
+			buildPhases = (
+				1F3029C2186A365B009F0246 /* Compile boot1h */,
+				1F3029C4186A36C8009F0246 /* Install boot1h */,
+			);
+			dependencies = (
+			);
+			name = boot1h;
+			productName = boot1h;
+		};
 		1F4465971869F2F2008660CA /* boot0 */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 1F4465981869F2F2008660CA /* Build configuration list for PBXAggregateTarget "boot0" */;
@@ -34,11 +46,20 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
+		1F3029C3186A3691009F0246 /* boot1.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = boot1.s; sourceTree = "<group>"; };
 		1F4465951869F2A1008660CA /* boot0.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = boot0.s; sourceTree = "<group>"; };
 		1F4465961869F2A1008660CA /* chain0.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = chain0.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		1F3029BD186A3626009F0246 /* boot1 */ = {
+			isa = PBXGroup;
+			children = (
+				1F3029C3186A3691009F0246 /* boot1.s */,
+			);
+			path = boot1;
+			sourceTree = "<group>";
+		};
 		1F4465941869F269008660CA /* boot0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4465941869F269008660CA /* boot0 */,
+				1F3029BD186A3626009F0246 /* boot1 */,
 				1F4465A11869F399008660CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,11 +107,46 @@
 			targets = (
 				1F4465971869F2F2008660CA /* boot0 */,
 				1F7F34451869F52500633013 /* chain0 */,
+				1F3029BE186A364A009F0246 /* boot1h */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1F3029C2186A365B009F0246 /* Compile boot1h */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/boot1/boot1.s",
+			);
+			name = "Compile boot1h";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/boot1h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "nasm -dBOOTDEV=HDISK \"${SCRIPT_INPUT_FILE_0}\" -o \"${SCRIPT_OUTPUT_FILE_0}\"";
+			showEnvVarsInLog = 0;
+		};
+		1F3029C4186A36C8009F0246 /* Install boot1h */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/boot1h",
+			);
+			name = "Install boot1h";
+			outputPaths = (
+				"$(DSTROOT)/usr/standalone/i386/boot1h",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "cp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
+			showEnvVarsInLog = 0;
+		};
 		1F44659B1869F2F9008660CA /* Compile boot0 */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -161,6 +218,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		1F3029C0186A364A009F0246 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1F3029C1186A364A009F0246 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		1F4465991869F2F2008660CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -204,6 +275,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1F3029BF186A364A009F0246 /* Build configuration list for PBXAggregateTarget "boot1h" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F3029C0186A364A009F0246 /* Debug */,
+				1F3029C1186A364A009F0246 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		1F4465981869F2F2008660CA /* Build configuration list for PBXAggregateTarget "boot0" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -220,6 +299,7 @@
 				1F7F34471869F52500633013 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FE6F357186920A8003ED90F /* Build configuration list for PBXProject "booter" */ = {
 			isa = XCConfigurationList;
