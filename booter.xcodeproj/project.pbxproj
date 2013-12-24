@@ -6,10 +6,60 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		1F4465971869F2F2008660CA /* boot0 */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1F4465981869F2F2008660CA /* Build configuration list for PBXAggregateTarget "boot0" */;
+			buildPhases = (
+				1F44659B1869F2F9008660CA /* Compile boot0 */,
+				1F4465AC1869F493008660CA /* Install boot0 */,
+			);
+			dependencies = (
+			);
+			name = boot0;
+			productName = boot0;
+		};
+		1F7F34451869F52500633013 /* chain0 */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1F7F34481869F52500633013 /* Build configuration list for PBXAggregateTarget "chain0" */;
+			buildPhases = (
+				1F7F34491869F53200633013 /* Compile chain0 */,
+				1F7F344A1869F57100633013 /* Install chain0 */,
+			);
+			dependencies = (
+			);
+			name = chain0;
+			productName = chain0;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXFileReference section */
+		1F4465951869F2A1008660CA /* boot0.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = boot0.s; sourceTree = "<group>"; };
+		1F4465961869F2A1008660CA /* chain0.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = chain0.s; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
+		1F4465941869F269008660CA /* boot0 */ = {
+			isa = PBXGroup;
+			children = (
+				1F4465951869F2A1008660CA /* boot0.s */,
+				1F4465961869F2A1008660CA /* chain0.s */,
+			);
+			path = boot0;
+			sourceTree = "<group>";
+		};
+		1F4465A11869F399008660CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		1FE6F353186920A8003ED90F = {
 			isa = PBXGroup;
 			children = (
+				1F4465941869F269008660CA /* boot0 */,
+				1F4465A11869F399008660CA /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -29,14 +79,116 @@
 				en,
 			);
 			mainGroup = 1FE6F353186920A8003ED90F;
+			productRefGroup = 1F4465A11869F399008660CA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				1F4465971869F2F2008660CA /* boot0 */,
+				1F7F34451869F52500633013 /* chain0 */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1F44659B1869F2F9008660CA /* Compile boot0 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/boot0/boot0.s",
+			);
+			name = "Compile boot0";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/boot0",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "nasm \"${SCRIPT_INPUT_FILE_0}\" -o \"${SCRIPT_OUTPUT_FILE_0}\"";
+			showEnvVarsInLog = 0;
+		};
+		1F4465AC1869F493008660CA /* Install boot0 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/boot0",
+			);
+			name = "Install boot0";
+			outputPaths = (
+				"$(DSTROOT)/usr/standalone/i386/boot0",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "cp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
+			showEnvVarsInLog = 0;
+		};
+		1F7F34491869F53200633013 /* Compile chain0 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/boot0/chain0.s",
+			);
+			name = "Compile chain0";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/chain0",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "nasm \"${SCRIPT_INPUT_FILE_0}\" -o \"${SCRIPT_OUTPUT_FILE_0}\"";
+			showEnvVarsInLog = 0;
+		};
+		1F7F344A1869F57100633013 /* Install chain0 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/chain0",
+			);
+			name = "Install chain0";
+			outputPaths = (
+				"$(DSTROOT)/usr/standalone/i386/chain0",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "cp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin XCBuildConfiguration section */
+		1F4465991869F2F2008660CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1F44659A1869F2F2008660CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1F7F34461869F52500633013 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1F7F34471869F52500633013 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		1FE6F358186920A8003ED90F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -52,6 +204,23 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1F4465981869F2F2008660CA /* Build configuration list for PBXAggregateTarget "boot0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F4465991869F2F2008660CA /* Debug */,
+				1F44659A1869F2F2008660CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F7F34481869F52500633013 /* Build configuration list for PBXAggregateTarget "chain0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F7F34461869F52500633013 /* Debug */,
+				1F7F34471869F52500633013 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		1FE6F357186920A8003ED90F /* Build configuration list for PBXProject "booter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
