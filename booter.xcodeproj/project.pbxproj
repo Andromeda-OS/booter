@@ -47,6 +47,14 @@
 
 /* Begin PBXBuildFile section */
 		1F0000B1186B6FB30026B0FA /* machOconv.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F0000B0186B6FB30026B0FA /* machOconv.c */; };
+		1F2D3C141874C9F10041D2CB /* rcz_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2D3C0A1874C9F10041D2CB /* rcz_common.h */; };
+		1F2D3C161874C9F10041D2CB /* rcz_compress_file.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2D3C0C1874C9F10041D2CB /* rcz_compress_file.h */; };
+		1F2D3C171874C9F10041D2CB /* rcz_compress_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D3C0D1874C9F10041D2CB /* rcz_compress_mem.c */; };
+		1F2D3C181874C9F10041D2CB /* rcz_compress_mem.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2D3C0E1874C9F10041D2CB /* rcz_compress_mem.h */; };
+		1F2D3C191874C9F10041D2CB /* rcz_decompress_file.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D3C0F1874C9F10041D2CB /* rcz_decompress_file.c */; };
+		1F2D3C1A1874C9F10041D2CB /* rcz_decompress_file.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2D3C101874C9F10041D2CB /* rcz_decompress_file.h */; };
+		1F2D3C1B1874C9F10041D2CB /* rcz_decompress_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D3C111874C9F10041D2CB /* rcz_decompress_mem.c */; };
+		1F2D3C1C1874C9F10041D2CB /* rcz_decompress_mem.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2D3C121874C9F10041D2CB /* rcz_decompress_mem.h */; };
 		1FA4704E18723455008DA9B3 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704418723455008DA9B3 /* error.c */; };
 		1FA4704F18723455008DA9B3 /* libsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4704518723455008DA9B3 /* libsa.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FA4705018723455008DA9B3 /* memory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4704618723455008DA9B3 /* memory.h */; };
@@ -62,6 +70,17 @@
 /* Begin PBXFileReference section */
 		1F0000A7186B6F5A0026B0FA /* machOconv */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = machOconv; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F0000B0186B6FB30026B0FA /* machOconv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = machOconv.c; sourceTree = "<group>"; };
+		1F2D3C041874C9410041D2CB /* librcz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = librcz.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F2D3C091874C9F10041D2CB /* rcz_common.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rcz_common.c; sourceTree = "<group>"; };
+		1F2D3C0A1874C9F10041D2CB /* rcz_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcz_common.h; sourceTree = "<group>"; };
+		1F2D3C0B1874C9F10041D2CB /* rcz_compress_file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rcz_compress_file.c; sourceTree = "<group>"; };
+		1F2D3C0C1874C9F10041D2CB /* rcz_compress_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcz_compress_file.h; sourceTree = "<group>"; };
+		1F2D3C0D1874C9F10041D2CB /* rcz_compress_mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rcz_compress_mem.c; sourceTree = "<group>"; };
+		1F2D3C0E1874C9F10041D2CB /* rcz_compress_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcz_compress_mem.h; sourceTree = "<group>"; };
+		1F2D3C0F1874C9F10041D2CB /* rcz_decompress_file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rcz_decompress_file.c; sourceTree = "<group>"; };
+		1F2D3C101874C9F10041D2CB /* rcz_decompress_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcz_decompress_file.h; sourceTree = "<group>"; };
+		1F2D3C111874C9F10041D2CB /* rcz_decompress_mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rcz_decompress_mem.c; sourceTree = "<group>"; };
+		1F2D3C121874C9F10041D2CB /* rcz_decompress_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcz_decompress_mem.h; sourceTree = "<group>"; };
 		1F3029C3186A3691009F0246 /* boot1.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = boot1.s; sourceTree = "<group>"; };
 		1F4465951869F2A1008660CA /* boot0.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = boot0.s; sourceTree = "<group>"; };
 		1F4465961869F2A1008660CA /* chain0.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = chain0.s; sourceTree = "<group>"; };
@@ -86,6 +105,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F2D3C011874C9410041D2CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1FA4703D187233F9008DA9B3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -102,6 +128,23 @@
 				1F0000B0186B6FB30026B0FA /* machOconv.c */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		1F2D3C081874C9450041D2CB /* rcz */ = {
+			isa = PBXGroup;
+			children = (
+				1F2D3C091874C9F10041D2CB /* rcz_common.c */,
+				1F2D3C0A1874C9F10041D2CB /* rcz_common.h */,
+				1F2D3C0B1874C9F10041D2CB /* rcz_compress_file.c */,
+				1F2D3C0C1874C9F10041D2CB /* rcz_compress_file.h */,
+				1F2D3C0D1874C9F10041D2CB /* rcz_compress_mem.c */,
+				1F2D3C0E1874C9F10041D2CB /* rcz_compress_mem.h */,
+				1F2D3C0F1874C9F10041D2CB /* rcz_decompress_file.c */,
+				1F2D3C101874C9F10041D2CB /* rcz_decompress_file.h */,
+				1F2D3C111874C9F10041D2CB /* rcz_decompress_mem.c */,
+				1F2D3C121874C9F10041D2CB /* rcz_decompress_mem.h */,
+			);
+			path = rcz;
 			sourceTree = "<group>";
 		};
 		1F3029BD186A3626009F0246 /* boot1 */ = {
@@ -126,6 +169,7 @@
 			children = (
 				1F0000A7186B6F5A0026B0FA /* machOconv */,
 				1FA47040187233F9008DA9B3 /* liblibsa.a */,
+				1F2D3C041874C9410041D2CB /* librcz.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +197,7 @@
 				1F4465941869F269008660CA /* boot0 */,
 				1F3029BD186A3626009F0246 /* boot1 */,
 				1FA4703B18723399008DA9B3 /* libsa */,
+				1F2D3C081874C9450041D2CB /* rcz */,
 				1F0000A8186B6F5A0026B0FA /* util */,
 				1F4465A11869F399008660CA /* Products */,
 			);
@@ -161,6 +206,18 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		1F2D3C021874C9410041D2CB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F2D3C181874C9F10041D2CB /* rcz_compress_mem.h in Headers */,
+				1F2D3C1C1874C9F10041D2CB /* rcz_decompress_mem.h in Headers */,
+				1F2D3C1A1874C9F10041D2CB /* rcz_decompress_file.h in Headers */,
+				1F2D3C161874C9F10041D2CB /* rcz_compress_file.h in Headers */,
+				1F2D3C141874C9F10041D2CB /* rcz_common.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1FA4703E187233F9008DA9B3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +245,23 @@
 			productName = machOconv;
 			productReference = 1F0000A7186B6F5A0026B0FA /* machOconv */;
 			productType = "com.apple.product-type.tool";
+		};
+		1F2D3C031874C9410041D2CB /* rcz */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F2D3C071874C9410041D2CB /* Build configuration list for PBXNativeTarget "rcz" */;
+			buildPhases = (
+				1F2D3C001874C9410041D2CB /* Sources */,
+				1F2D3C011874C9410041D2CB /* Frameworks */,
+				1F2D3C021874C9410041D2CB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rcz;
+			productName = rcz;
+			productReference = 1F2D3C041874C9410041D2CB /* librcz.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		1FA4703F187233F9008DA9B3 /* libsa */ = {
 			isa = PBXNativeTarget;
@@ -231,6 +305,7 @@
 				1F3029BE186A364A009F0246 /* boot1h */,
 				1F0000A6186B6F5A0026B0FA /* machOconv */,
 				1FA4703F187233F9008DA9B3 /* libsa */,
+				1F2D3C031874C9410041D2CB /* rcz */,
 			);
 		};
 /* End PBXProject section */
@@ -349,6 +424,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F2D3C001874C9410041D2CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F2D3C191874C9F10041D2CB /* rcz_decompress_file.c in Sources */,
+				1F2D3C1B1874C9F10041D2CB /* rcz_decompress_mem.c in Sources */,
+				1F2D3C171874C9F10041D2CB /* rcz_compress_mem.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1FA4703C187233F9008DA9B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -434,6 +519,90 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		1F2D3C051874C9410041D2CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-Oz",
+					"-fno-builtin",
+					"-static",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1F2D3C061874C9410041D2CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-Oz",
+					"-fno-builtin",
+					"-static",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -597,6 +766,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		1F2D3C071874C9410041D2CB /* Build configuration list for PBXNativeTarget "rcz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F2D3C051874C9410041D2CB /* Debug */,
+				1F2D3C061874C9410041D2CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		1F3029BF186A364A009F0246 /* Build configuration list for PBXAggregateTarget "boot1h" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -631,6 +808,7 @@
 				1FA47043187233F9008DA9B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FE6F357186920A8003ED90F /* Build configuration list for PBXProject "booter" */ = {
 			isa = XCConfigurationList;
