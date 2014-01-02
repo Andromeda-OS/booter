@@ -84,7 +84,6 @@
 		1F7F98EC1875C0D600752D3F /* ntfs_private.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F98BE1875C0D600752D3F /* ntfs_private.h */; };
 		1F7F98ED1875C0D600752D3F /* ntfs.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F98BF1875C0D600752D3F /* ntfs.c */; };
 		1F7F98EE1875C0D600752D3F /* ntfs.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F98C01875C0D600752D3F /* ntfs.h */; };
-		1F7F98EF1875C0D600752D3F /* pci.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F98C11875C0D600752D3F /* pci.c */; };
 		1F7F98F01875C0D600752D3F /* pci.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F98C21875C0D600752D3F /* pci.h */; };
 		1F7F98F11875C0D600752D3F /* saio_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F98C31875C0D600752D3F /* saio_internal.h */; };
 		1F7F98F21875C0D600752D3F /* saio_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F98C41875C0D600752D3F /* saio_types.h */; };
@@ -808,7 +807,6 @@
 			files = (
 				1F7F98ED1875C0D600752D3F /* ntfs.c in Sources */,
 				1F7F98E41875C0D600752D3F /* md5c.c in Sources */,
-				1F7F98EF1875C0D600752D3F /* pci.c in Sources */,
 				1F7F98D61875C0D600752D3F /* cache.c in Sources */,
 				1F7F98D71875C0D600752D3F /* console.c in Sources */,
 				1F7F98E61875C0D600752D3F /* misc.c in Sources */,
@@ -1330,6 +1328,7 @@
 				1F7F98A21875C07F00752D3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FA47041187233F9008DA9B3 /* Build configuration list for PBXNativeTarget "libsa" */ = {
 			isa = XCConfigurationList;
