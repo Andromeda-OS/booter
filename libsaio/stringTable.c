@@ -234,7 +234,7 @@ BOOL getValueForConfigTableKey(const char *table, const char *key, const char **
                             /* found the key; now look for either
                              * '=' or ';'
                              */
-                            while (c = *table) {
+                            while ((c = *table)) {
                                 ++table;
                                 if (c == '\\') {
                                     ++table;
