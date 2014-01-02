@@ -1279,6 +1279,7 @@
 				);
 				PRODUCT_NAME = rcz;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -1318,6 +1319,7 @@
 				);
 				PRODUCT_NAME = rcz;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -1434,6 +1436,7 @@
 				);
 				PRODUCT_NAME = saio;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 				WARNING_CFLAGS = "-Wno-visibility";
 			};
 			name = Debug;
@@ -1494,6 +1497,7 @@
 				);
 				PRODUCT_NAME = saio;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 				WARNING_CFLAGS = "-Wno-visibility";
 			};
 			name = Release;
@@ -1546,6 +1550,7 @@
 				PRODUCT_NAME = sa;
 				PUBLIC_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -1593,6 +1598,7 @@
 				PRODUCT_NAME = sa;
 				PUBLIC_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
