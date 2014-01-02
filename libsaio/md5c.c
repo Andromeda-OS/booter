@@ -36,7 +36,7 @@
 #include <string.h>
 #endif
 
-#include <sys/md5.h>
+#include <libkern/crypto/md5.h>
 
 
 #ifdef KERNEL
