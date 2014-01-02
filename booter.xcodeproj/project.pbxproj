@@ -57,7 +57,7 @@
 		1F2D3C1C1874C9F10041D2CB /* rcz_decompress_mem.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2D3C121874C9F10041D2CB /* rcz_decompress_mem.h */; };
 		1F7F98D21875C0D600752D3F /* bios.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F98A31875C0D600752D3F /* bios.h */; };
 		1F7F98D31875C0D600752D3F /* biosfn.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F98A41875C0D600752D3F /* biosfn.c */; };
-		1F7F98D41875C0D600752D3F /* bootstruct.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F98A51875C0D600752D3F /* bootstruct.c */; };
+		1F7F98D41875C0D600752D3F /* bootstruct.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F98A51875C0D600752D3F /* bootstruct.c */; settings = {COMPILER_FLAGS = "-Wno-int-conversion"; }; };
 		1F7F98D51875C0D600752D3F /* bootstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F98A61875C0D600752D3F /* bootstruct.h */; };
 		1F7F98D61875C0D600752D3F /* cache.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F98A71875C0D600752D3F /* cache.c */; };
 		1F7F98D71875C0D600752D3F /* console.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F98A81875C0D600752D3F /* console.c */; };
