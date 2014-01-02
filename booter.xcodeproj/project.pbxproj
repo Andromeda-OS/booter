@@ -111,6 +111,19 @@
 		1FA4705518723455008DA9B3 /* string.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704B18723455008DA9B3 /* string.c */; };
 		1FA4705618723455008DA9B3 /* strtol.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704C18723455008DA9B3 /* strtol.c */; };
 		1FA4705718723455008DA9B3 /* zalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704D18723455008DA9B3 /* zalloc.c */; };
+		1FBEC614187608DE006DAC9F /* udivdi3.s in Sources */ = {isa = PBXBuildFile; fileRef = 1FBEC612187608DE006DAC9F /* udivdi3.s */; };
+		1FBEC615187608DE006DAC9F /* umoddi3.s in Sources */ = {isa = PBXBuildFile; fileRef = 1FBEC613187608DE006DAC9F /* umoddi3.s */; };
+		1FDBEB371875FD3500D03F4F /* boot.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB2D1875FD3500D03F4F /* boot.c */; };
+		1FDBEB381875FD3500D03F4F /* boot2.s in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB2F1875FD3500D03F4F /* boot2.s */; };
+		1FDBEB391875FD3500D03F4F /* drivers.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB301875FD3500D03F4F /* drivers.c */; };
+		1FDBEB3A1875FD3500D03F4F /* graphics.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB311875FD3500D03F4F /* graphics.c */; };
+		1FDBEB3B1875FD3500D03F4F /* lzss.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB321875FD3500D03F4F /* lzss.c */; };
+		1FDBEB3C1875FD3500D03F4F /* options.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB331875FD3500D03F4F /* options.c */; };
+		1FDBEB3D1875FD3500D03F4F /* prompt.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB341875FD3500D03F4F /* prompt.c */; };
+		1FDBEB451875FD6F00D03F4F /* libsa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA47040187233F9008DA9B3 /* libsa.a */; };
+		1FDBEB461875FD6F00D03F4F /* libsaio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7F989F1875C07F00752D3F /* libsaio.a */; };
+		1FDBEB4A1876009000D03F4F /* bios.s in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB491876009000D03F4F /* bios.s */; };
+		1FDBEB4C1876017500D03F4F /* asm.s in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB4B1876017500D03F4F /* asm.s */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +189,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1F42B3DD18592FE90023356E;
 			remoteInfo = mach_kernel;
+		};
+		1FDBEB3F1875FD5800D03F4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F0000A6186B6F5A0026B0FA;
+			remoteInfo = machOconv;
+		};
+		1FDBEB411875FD5800D03F4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1FA4703F187233F9008DA9B3;
+			remoteInfo = libsa;
+		};
+		1FDBEB431875FD5800D03F4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F7F989E1875C07F00752D3F;
+			remoteInfo = libsaio;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -256,6 +290,25 @@
 		1FA4704B18723455008DA9B3 /* string.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = string.c; sourceTree = "<group>"; };
 		1FA4704C18723455008DA9B3 /* strtol.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strtol.c; sourceTree = "<group>"; };
 		1FA4704D18723455008DA9B3 /* zalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zalloc.c; sourceTree = "<group>"; };
+		1FBEC611187608DE006DAC9F /* assembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = assembly.h; sourceTree = "<group>"; };
+		1FBEC612187608DE006DAC9F /* udivdi3.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = udivdi3.s; sourceTree = "<group>"; };
+		1FBEC613187608DE006DAC9F /* umoddi3.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = umoddi3.s; sourceTree = "<group>"; };
+		1FDBEB221875FD2500D03F4F /* boot2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = boot2; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FDBEB2B1875FD3500D03F4F /* appleboot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appleboot.h; sourceTree = "<group>"; };
+		1FDBEB2C1875FD3500D03F4F /* appleClut8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appleClut8.h; sourceTree = "<group>"; };
+		1FDBEB2D1875FD3500D03F4F /* boot.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = boot.c; sourceTree = "<group>"; };
+		1FDBEB2E1875FD3500D03F4F /* boot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boot.h; sourceTree = "<group>"; };
+		1FDBEB2F1875FD3500D03F4F /* boot2.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = boot2.s; sourceTree = "<group>"; };
+		1FDBEB301875FD3500D03F4F /* drivers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = drivers.c; sourceTree = "<group>"; };
+		1FDBEB311875FD3500D03F4F /* graphics.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = graphics.c; sourceTree = "<group>"; };
+		1FDBEB321875FD3500D03F4F /* lzss.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzss.c; sourceTree = "<group>"; };
+		1FDBEB331875FD3500D03F4F /* options.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = options.c; sourceTree = "<group>"; };
+		1FDBEB341875FD3500D03F4F /* prompt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = prompt.c; sourceTree = "<group>"; };
+		1FDBEB351875FD3500D03F4F /* WKdm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKdm.h; sourceTree = "<group>"; };
+		1FDBEB361875FD3500D03F4F /* WKdmDecompress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = WKdmDecompress.c; sourceTree = "<group>"; };
+		1FDBEB481875FF2800D03F4F /* vers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vers.h; sourceTree = "<group>"; };
+		1FDBEB491876009000D03F4F /* bios.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = bios.s; sourceTree = "<group>"; };
+		1FDBEB4B1876017500D03F4F /* asm.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = asm.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,12 +340,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FDBEB1F1875FD2500D03F4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FDBEB451875FD6F00D03F4F /* libsa.a in Frameworks */,
+				1FDBEB461875FD6F00D03F4F /* libsaio.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1F0000A8186B6F5A0026B0FA /* util */ = {
 			isa = PBXGroup;
 			children = (
+				1FBEC611187608DE006DAC9F /* assembly.h */,
+				1FBEC612187608DE006DAC9F /* udivdi3.s */,
+				1FBEC613187608DE006DAC9F /* umoddi3.s */,
 				1F0000B0186B6FB30026B0FA /* machOconv.c */,
 			);
 			path = util;
@@ -339,6 +404,7 @@
 				1FA47040187233F9008DA9B3 /* libsa.a */,
 				1F2D3C041874C9410041D2CB /* librcz.a */,
 				1F7F989F1875C07F00752D3F /* libsaio.a */,
+				1FDBEB221875FD2500D03F4F /* boot2 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -347,7 +413,9 @@
 			isa = PBXGroup;
 			children = (
 				1F7F98B21875C0D600752D3F /* legacy */,
+				1FDBEB4B1876017500D03F4F /* asm.s */,
 				1F7F98A31875C0D600752D3F /* bios.h */,
+				1FDBEB491876009000D03F4F /* bios.s */,
 				1F7F98A41875C0D600752D3F /* biosfn.c */,
 				1F7F98A51875C0D600752D3F /* bootstruct.c */,
 				1F7F98A61875C0D600752D3F /* bootstruct.h */,
@@ -445,11 +513,32 @@
 			path = libsa;
 			sourceTree = "<group>";
 		};
+		1FDBEB231875FD2500D03F4F /* boot2 */ = {
+			isa = PBXGroup;
+			children = (
+				1FDBEB2B1875FD3500D03F4F /* appleboot.h */,
+				1FDBEB2C1875FD3500D03F4F /* appleClut8.h */,
+				1FDBEB2D1875FD3500D03F4F /* boot.c */,
+				1FDBEB2E1875FD3500D03F4F /* boot.h */,
+				1FDBEB2F1875FD3500D03F4F /* boot2.s */,
+				1FDBEB301875FD3500D03F4F /* drivers.c */,
+				1FDBEB311875FD3500D03F4F /* graphics.c */,
+				1FDBEB321875FD3500D03F4F /* lzss.c */,
+				1FDBEB331875FD3500D03F4F /* options.c */,
+				1FDBEB341875FD3500D03F4F /* prompt.c */,
+				1FDBEB351875FD3500D03F4F /* WKdm.h */,
+				1FDBEB361875FD3500D03F4F /* WKdmDecompress.c */,
+				1FDBEB481875FF2800D03F4F /* vers.h */,
+			);
+			path = boot2;
+			sourceTree = "<group>";
+		};
 		1FE6F353186920A8003ED90F = {
 			isa = PBXGroup;
 			children = (
 				1F4465941869F269008660CA /* boot0 */,
 				1F3029BD186A3626009F0246 /* boot1 */,
+				1FDBEB231875FD2500D03F4F /* boot2 */,
 				1FA4703B18723399008DA9B3 /* libsa */,
 				1F7F989A1875BFCC00752D3F /* libsaio */,
 				1F2D3C081874C9450041D2CB /* rcz */,
@@ -585,6 +674,25 @@
 			productReference = 1FA47040187233F9008DA9B3 /* libsa.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		1FDBEB211875FD2500D03F4F /* boot2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FDBEB281875FD2500D03F4F /* Build configuration list for PBXNativeTarget "boot2" */;
+			buildPhases = (
+				1FDBEB1E1875FD2500D03F4F /* Sources */,
+				1FDBEB1F1875FD2500D03F4F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1FDBEB401875FD5800D03F4F /* PBXTargetDependency */,
+				1FDBEB421875FD5800D03F4F /* PBXTargetDependency */,
+				1FDBEB441875FD5800D03F4F /* PBXTargetDependency */,
+			);
+			name = boot2;
+			productName = boot2;
+			productReference = 1FDBEB221875FD2500D03F4F /* boot2 */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -618,6 +726,7 @@
 				1FA4703F187233F9008DA9B3 /* libsa */,
 				1F7F989E1875C07F00752D3F /* libsaio */,
 				1F2D3C031874C9410041D2CB /* librcz */,
+				1FDBEB211875FD2500D03F4F /* boot2 */,
 			);
 		};
 /* End PBXProject section */
@@ -820,9 +929,11 @@
 				1F7F98F81875C0D600752D3F /* ufs_byteorder.c in Sources */,
 				1F7F98F71875C0D600752D3F /* table.c in Sources */,
 				1F7F98FC1875C0D600752D3F /* vbe.c in Sources */,
+				1FDBEB4A1876009000D03F4F /* bios.s in Sources */,
 				1F7F98F61875C0D600752D3F /* sys.c in Sources */,
 				1F7F98DA1875C0D600752D3F /* disk.c in Sources */,
 				1F7F98DD1875C0D600752D3F /* hfs_compare.c in Sources */,
+				1FDBEB4C1876017500D03F4F /* asm.s in Sources */,
 				1F7F98FE1875C0D600752D3F /* xml.c in Sources */,
 				1F7F98D31875C0D600752D3F /* biosfn.c in Sources */,
 				1F7F98FA1875C0D600752D3F /* ufs.c in Sources */,
@@ -849,6 +960,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FDBEB1E1875FD2500D03F4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FDBEB381875FD3500D03F4F /* boot2.s in Sources */,
+				1FDBEB371875FD3500D03F4F /* boot.c in Sources */,
+				1FDBEB3A1875FD3500D03F4F /* graphics.c in Sources */,
+				1FDBEB391875FD3500D03F4F /* drivers.c in Sources */,
+				1FDBEB3D1875FD3500D03F4F /* prompt.c in Sources */,
+				1FDBEB3C1875FD3500D03F4F /* options.c in Sources */,
+				1FDBEB3B1875FD3500D03F4F /* lzss.c in Sources */,
+				1FBEC614187608DE006DAC9F /* udivdi3.s in Sources */,
+				1FBEC615187608DE006DAC9F /* umoddi3.s in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -856,6 +983,21 @@
 			isa = PBXTargetDependency;
 			name = mach_kernel;
 			targetProxy = 1F7F991D1875C16900752D3F /* PBXContainerItemProxy */;
+		};
+		1FDBEB401875FD5800D03F4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F0000A6186B6F5A0026B0FA /* machOconv */;
+			targetProxy = 1FDBEB3F1875FD5800D03F4F /* PBXContainerItemProxy */;
+		};
+		1FDBEB421875FD5800D03F4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1FA4703F187233F9008DA9B3 /* libsa */;
+			targetProxy = 1FDBEB411875FD5800D03F4F /* PBXContainerItemProxy */;
+		};
+		1FDBEB441875FD5800D03F4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F7F989E1875C07F00752D3F /* libsaio */;
+			targetProxy = 1FDBEB431875FD5800D03F4F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1100,6 +1242,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
+					"-Os",
+					"-Oz",
 					"-fno-builtin",
 					"-static",
 					"-fomit-frame-pointer",
@@ -1107,6 +1251,7 @@
 					"-fno-align-functions",
 					"-mno-sse2",
 					"-mfpmath=387",
+					"-fno-stack-protector",
 				);
 				PRODUCT_NAME = saio;
 				SDKROOT = macosx;
@@ -1157,6 +1302,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CFLAGS = (
+					"-Os",
+					"-Oz",
 					"-fno-builtin",
 					"-static",
 					"-fomit-frame-pointer",
@@ -1164,6 +1311,7 @@
 					"-fno-align-functions",
 					"-mno-sse2",
 					"-mfpmath=387",
+					"-fno-stack-protector",
 				);
 				PRODUCT_NAME = saio;
 				SDKROOT = macosx;
@@ -1205,6 +1353,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CFLAGS = (
+					"-Os",
 					"-Oz",
 					"-static",
 					"-fomit-frame-pointer",
@@ -1212,6 +1361,7 @@
 					"-fno-align-functions",
 					"-mno-sse2",
 					"-mfpmath=387",
+					"-fno-stack-protector",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
 				PRODUCT_NAME = sa;
@@ -1250,6 +1400,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CFLAGS = (
+					"-Os",
 					"-Oz",
 					"-static",
 					"-fomit-frame-pointer",
@@ -1257,11 +1408,144 @@
 					"-fno-align-functions",
 					"-mno-sse2",
 					"-mfpmath=387",
+					"-fno-stack-protector",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
 				PRODUCT_NAME = sa;
 				PUBLIC_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
 				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1FDBEB291875FD2500D03F4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"VGA_TEXT_MODE=0",
+					SAIO_INTERNAL_USER,
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libsa",
+					"$(SRCROOT)/libsaio",
+					"$(SRCROOT)/boot2",
+				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-Os",
+					"-Oz",
+					"-fno-builtin",
+					"-static",
+					"-fomit-frame-pointer",
+					"-mpreferred-stack-boundary=2",
+					"-fno-align-functions",
+					"-mno-sse2",
+					"-mfpmath=387",
+					"-fno-stack-protector",
+				);
+				OTHER_LDFLAGS = (
+					"-static",
+					"-Wl,-preload",
+					"-Wl,-segaddr,__TEXT,$(boot2_address)",
+					"-Wl,-segalign,20",
+					"-Wl,-e,boot2",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				USE_HEADERMAP = NO;
+				boot2_address = 20200;
+			};
+			name = Debug;
+		};
+		1FDBEB2A1875FD2500D03F4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"VGA_TEXT_MODE=0",
+					SAIO_INTERNAL_USER,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/libsa",
+					"$(SRCROOT)/libsaio",
+					"$(SRCROOT)/boot2",
+				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-Os",
+					"-Oz",
+					"-fno-builtin",
+					"-static",
+					"-fomit-frame-pointer",
+					"-mpreferred-stack-boundary=2",
+					"-fno-align-functions",
+					"-mno-sse2",
+					"-mfpmath=387",
+					"-fno-stack-protector",
+				);
+				OTHER_LDFLAGS = (
+					"-static",
+					"-Wl,-preload",
+					"-Wl,-segaddr,__TEXT,$(boot2_address)",
+					"-Wl,-segalign,20",
+					"-Wl,-e,boot2",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				USE_HEADERMAP = NO;
+				boot2_address = 20200;
 			};
 			name = Release;
 		};
@@ -1341,6 +1625,15 @@
 			buildConfigurations = (
 				1FA47042187233F9008DA9B3 /* Debug */,
 				1FA47043187233F9008DA9B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1FDBEB281875FD2500D03F4F /* Build configuration list for PBXNativeTarget "boot2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FDBEB291875FD2500D03F4F /* Debug */,
+				1FDBEB2A1875FD2500D03F4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -44,8 +44,6 @@
  * All rights reserved.
  */
 
-#define UFS_SUPPORT 1
-
 #include "bootstruct.h"
 #include "libsaio.h"
 #include "fdisk.h"
