@@ -1060,12 +1060,14 @@
 		1FE6F358186920A8003ED90F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				XNU_INSTALL_ROOT = "$(PROJECT_TEMP_ROOT)/xnu";
 			};
 			name = Debug;
 		};
 		1FE6F359186920A8003ED90F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				XNU_INSTALL_ROOT = "$(DSTROOT)";
 			};
 			name = Release;
 		};
