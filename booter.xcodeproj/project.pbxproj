@@ -100,6 +100,7 @@
 		1F7F98FD1875C0D600752D3F /* vbe.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F98CF1875C0D600752D3F /* vbe.h */; };
 		1F7F98FE1875C0D600752D3F /* xml.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F98D01875C0D600752D3F /* xml.c */; };
 		1F7F98FF1875C0D600752D3F /* xml.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F98D11875C0D600752D3F /* xml.h */; };
+		1F7F992C1875C5E000752D3F /* namespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F992B1875C5E000752D3F /* namespace.h */; };
 		1FA4704E18723455008DA9B3 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704418723455008DA9B3 /* error.c */; };
 		1FA4704F18723455008DA9B3 /* libsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4704518723455008DA9B3 /* libsa.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FA4705018723455008DA9B3 /* memory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4704618723455008DA9B3 /* memory.h */; };
@@ -243,6 +244,7 @@
 		1F7F98D01875C0D600752D3F /* xml.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xml.c; sourceTree = "<group>"; };
 		1F7F98D11875C0D600752D3F /* xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xml.h; sourceTree = "<group>"; };
 		1F7F99011875C14C00752D3F /* Kernel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kernel.xcodeproj; path = ../Kernel/Kernel.xcodeproj; sourceTree = "<group>"; };
+		1F7F992B1875C5E000752D3F /* namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = namespace.h; sourceTree = "<group>"; };
 		1FA47040187233F9008DA9B3 /* liblibsa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibsa.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA4704418723455008DA9B3 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
 		1FA4704518723455008DA9B3 /* libsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libsa.h; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				1F7F98B91875C0D600752D3F /* msdos_private.h */,
 				1F7F98BA1875C0D600752D3F /* msdos.c */,
 				1F7F98BB1875C0D600752D3F /* msdos.h */,
+				1F7F992B1875C5E000752D3F /* namespace.h */,
 				1F7F98BC1875C0D600752D3F /* nbp_cmd.h */,
 				1F7F98BD1875C0D600752D3F /* nbp.c */,
 				1F7F98BE1875C0D600752D3F /* ntfs_private.h */,
@@ -497,6 +500,7 @@
 				1F7F98FF1875C0D600752D3F /* xml.h in Headers */,
 				1F7F98DB1875C0D600752D3F /* fdisk.h in Headers */,
 				1F7F98D51875C0D600752D3F /* bootstruct.h in Headers */,
+				1F7F992C1875C5E000752D3F /* namespace.h in Headers */,
 				1F7F98F41875C0D600752D3F /* stringConstants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

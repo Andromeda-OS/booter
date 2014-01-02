@@ -58,7 +58,7 @@
 #include "bootstruct.h"
 #include <sys/md5.h>
 #include <uuid/uuid.h>
-#include <Kernel/uuid/namespace.h>
+#include "namespace.h"
 
 struct devsw {
     const char *  name;
