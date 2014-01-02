@@ -47,6 +47,8 @@
 #include "libsaio.h"
 #include "bootstruct.h"
 
+#define VGA_TEXT_MODE 0
+
 BOOL gVerboseMode;
 BOOL gErrors;
 

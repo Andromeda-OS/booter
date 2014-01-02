@@ -29,6 +29,8 @@
 #include "libsaio.h"
 #include "bootstruct.h"
 
+#define VGA_TEXT_MODE 0
+
 /*==========================================================================
  * Initialize the structure of parameters passed to
  * the kernel by the booter.
