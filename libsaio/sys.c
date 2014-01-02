@@ -56,7 +56,7 @@
 
 #include "libsaio.h"
 #include "bootstruct.h"
-#include <sys/md5.h>
+#include <libkern/crypto/md5.h>
 #include <uuid/uuid.h>
 #include "namespace.h"
 
