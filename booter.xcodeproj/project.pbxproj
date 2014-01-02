@@ -19,6 +19,19 @@
 			name = boot1h;
 			productName = boot1h;
 		};
+		1F3ED95318762BD40066EF9F /* cdboot */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1F3ED95E18762BD40066EF9F /* Build configuration list for PBXAggregateTarget "cdboot" */;
+			buildPhases = (
+				1F3ED96218762C040066EF9F /* Assemble First Stage */,
+				1F3ED96318762C2D0066EF9F /* Combine Booter Components */,
+			);
+			dependencies = (
+				1F3ED96018762BDF0066EF9F /* PBXTargetDependency */,
+			);
+			name = cdboot;
+			productName = cdboot;
+		};
 		1F4465971869F2F2008660CA /* boot0 */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 1F4465981869F2F2008660CA /* Build configuration list for PBXAggregateTarget "boot0" */;
@@ -129,6 +142,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1F3ED95F18762BDF0066EF9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1FDBEB211875FD2500D03F4F;
+			remoteInfo = boot2;
+		};
 		1F7F990D1875C14C00752D3F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
@@ -255,6 +275,7 @@
 		1F2D3C111874C9F10041D2CB /* rcz_decompress_mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rcz_decompress_mem.c; sourceTree = "<group>"; };
 		1F2D3C121874C9F10041D2CB /* rcz_decompress_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcz_decompress_mem.h; sourceTree = "<group>"; };
 		1F3029C3186A3691009F0246 /* boot1.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = boot1.s; sourceTree = "<group>"; };
+		1F3ED96418762CE40066EF9F /* cdboot.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = cdboot.s; sourceTree = "<group>"; };
 		1F4465951869F2A1008660CA /* boot0.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = boot0.s; sourceTree = "<group>"; };
 		1F4465961869F2A1008660CA /* chain0.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = chain0.s; sourceTree = "<group>"; };
 		1F7F989F1875C07F00752D3F /* libsaio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsaio.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -415,6 +436,14 @@
 				1F3029C3186A3691009F0246 /* boot1.s */,
 			);
 			path = boot1;
+			sourceTree = "<group>";
+		};
+		1F3ED96118762BE30066EF9F /* cdboot */ = {
+			isa = PBXGroup;
+			children = (
+				1F3ED96418762CE40066EF9F /* cdboot.s */,
+			);
+			path = cdboot;
 			sourceTree = "<group>";
 		};
 		1F4465941869F269008660CA /* boot0 */ = {
@@ -578,6 +607,7 @@
 				1F3029BD186A3626009F0246 /* boot1 */,
 				1FDBEB231875FD2500D03F4F /* boot2 */,
 				1FBEC61A18760BAC006DAC9F /* bootdata */,
+				1F3ED96118762BE30066EF9F /* cdboot */,
 				1FA4703B18723399008DA9B3 /* libsa */,
 				1F7F989A1875BFCC00752D3F /* libsaio */,
 				1F2D3C081874C9450041D2CB /* rcz */,
@@ -765,6 +795,7 @@
 				1F4465971869F2F2008660CA /* boot0 */,
 				1F7F34451869F52500633013 /* chain0 */,
 				1F3029BE186A364A009F0246 /* boot1h */,
+				1F3ED95318762BD40066EF9F /* cdboot */,
 				1FDBEB211875FD2500D03F4F /* boot2 */,
 				1F0000A6186B6F5A0026B0FA /* machOconv */,
 				1FA4703F187233F9008DA9B3 /* libsa */,
@@ -866,6 +897,40 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "cp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
+			showEnvVarsInLog = 0;
+		};
+		1F3ED96218762C040066EF9F /* Assemble First Stage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/cdboot/cdboot.s",
+			);
+			name = "Assemble First Stage";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/cdboot",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "nasm ${SCRIPT_INPUT_FILE_0} -o ${SCRIPT_OUTPUT_FILE_0}";
+			showEnvVarsInLog = 0;
+		};
+		1F3ED96318762C2D0066EF9F /* Combine Booter Components */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/boot",
+			);
+			name = "Combine Booter Components";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/cdboot",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "dd if=${SCRIPT_INPUT_FILE_0} of=${SCRIPT_OUTPUT_FILE_0} conv=sync bs=2k seek=1";
 			showEnvVarsInLog = 0;
 		};
 		1F44659B1869F2F9008660CA /* Compile boot0 */ = {
@@ -1056,6 +1121,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F3ED96018762BDF0066EF9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1FDBEB211875FD2500D03F4F /* boot2 */;
+			targetProxy = 1F3ED95F18762BDF0066EF9F /* PBXContainerItemProxy */;
+		};
 		1F7F991E1875C16900752D3F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = mach_kernel;
@@ -1241,6 +1311,20 @@
 			name = Debug;
 		};
 		1F3029C1186A364A009F0246 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1F3ED95418762BD40066EF9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1F3ED95518762BD40066EF9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1671,6 +1755,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		1F3ED95E18762BD40066EF9F /* Build configuration list for PBXAggregateTarget "cdboot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F3ED95418762BD40066EF9F /* Debug */,
+				1F3ED95518762BD40066EF9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		1F4465981869F2F2008660CA /* Build configuration list for PBXAggregateTarget "boot0" */ = {
 			isa = XCConfigurationList;
