@@ -113,6 +113,8 @@
 		1FA4705718723455008DA9B3 /* zalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704D18723455008DA9B3 /* zalloc.c */; };
 		1FBEC614187608DE006DAC9F /* udivdi3.s in Sources */ = {isa = PBXBuildFile; fileRef = 1FBEC612187608DE006DAC9F /* udivdi3.s */; };
 		1FBEC615187608DE006DAC9F /* umoddi3.s in Sources */ = {isa = PBXBuildFile; fileRef = 1FBEC613187608DE006DAC9F /* umoddi3.s */; };
+		1FBEC61E18760C38006DAC9F /* com.apple.Boot.plist in Install Boot Property List */ = {isa = PBXBuildFile; fileRef = 1FBEC61B18760C20006DAC9F /* com.apple.Boot.plist */; };
+		1FBEC62018760C4C006DAC9F /* com.apple.Boot.plist.5 in Install Manual Pages */ = {isa = PBXBuildFile; fileRef = 1FBEC61C18760C20006DAC9F /* com.apple.Boot.plist.5 */; };
 		1FDBEB371875FD3500D03F4F /* boot.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB2D1875FD3500D03F4F /* boot.c */; };
 		1FDBEB381875FD3500D03F4F /* boot2.s in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB2F1875FD3500D03F4F /* boot2.s */; };
 		1FDBEB391875FD3500D03F4F /* drivers.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FDBEB301875FD3500D03F4F /* drivers.c */; };
@@ -213,6 +215,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1FBEC61D18760C28006DAC9F /* Install Boot Property List */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /Library/Preferences/SystemConfiguration;
+			dstSubfolderSpec = 0;
+			files = (
+				1FBEC61E18760C38006DAC9F /* com.apple.Boot.plist in Install Boot Property List */,
+			);
+			name = "Install Boot Property List";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		1FBEC61F18760C3C006DAC9F /* Install Manual Pages */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man5;
+			dstSubfolderSpec = 0;
+			files = (
+				1FBEC62018760C4C006DAC9F /* com.apple.Boot.plist.5 in Install Manual Pages */,
+			);
+			name = "Install Manual Pages";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1F0000A7186B6F5A0026B0FA /* machOconv */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = machOconv; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F0000B0186B6FB30026B0FA /* machOconv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = machOconv.c; sourceTree = "<group>"; };
@@ -293,6 +320,8 @@
 		1FBEC611187608DE006DAC9F /* assembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = assembly.h; sourceTree = "<group>"; };
 		1FBEC612187608DE006DAC9F /* udivdi3.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = udivdi3.s; sourceTree = "<group>"; };
 		1FBEC613187608DE006DAC9F /* umoddi3.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = umoddi3.s; sourceTree = "<group>"; };
+		1FBEC61B18760C20006DAC9F /* com.apple.Boot.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = com.apple.Boot.plist; sourceTree = "<group>"; };
+		1FBEC61C18760C20006DAC9F /* com.apple.Boot.plist.5 */ = {isa = PBXFileReference; lastKnownFileType = text; path = com.apple.Boot.plist.5; sourceTree = "<group>"; };
 		1FDBEB221875FD2500D03F4F /* boot2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = boot2; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FDBEB2B1875FD3500D03F4F /* appleboot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appleboot.h; sourceTree = "<group>"; };
 		1FDBEB2C1875FD3500D03F4F /* appleClut8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appleClut8.h; sourceTree = "<group>"; };
@@ -513,6 +542,15 @@
 			path = libsa;
 			sourceTree = "<group>";
 		};
+		1FBEC61A18760BAC006DAC9F /* bootdata */ = {
+			isa = PBXGroup;
+			children = (
+				1FBEC61B18760C20006DAC9F /* com.apple.Boot.plist */,
+				1FBEC61C18760C20006DAC9F /* com.apple.Boot.plist.5 */,
+			);
+			path = bootdata;
+			sourceTree = "<group>";
+		};
 		1FDBEB231875FD2500D03F4F /* boot2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +577,7 @@
 				1F4465941869F269008660CA /* boot0 */,
 				1F3029BD186A3626009F0246 /* boot1 */,
 				1FDBEB231875FD2500D03F4F /* boot2 */,
+				1FBEC61A18760BAC006DAC9F /* bootdata */,
 				1FA4703B18723399008DA9B3 /* libsa */,
 				1F7F989A1875BFCC00752D3F /* libsaio */,
 				1F2D3C081874C9450041D2CB /* rcz */,
@@ -682,6 +721,8 @@
 				1FDBEB1F1875FD2500D03F4F /* Frameworks */,
 				1FBEC61618760A5C006DAC9F /* Convert Booter File */,
 				1FBEC61818760B04006DAC9F /* Install Booter */,
+				1FBEC61D18760C28006DAC9F /* Install Boot Property List */,
+				1FBEC61F18760C3C006DAC9F /* Install Manual Pages */,
 			);
 			buildRules = (
 			);
