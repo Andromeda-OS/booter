@@ -1110,6 +1110,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				WARNING_CFLAGS = "-Wno-visibility";
 			};
 			name = Debug;
 		};
@@ -1166,6 +1167,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				WARNING_CFLAGS = "-Wno-visibility";
 			};
 			name = Release;
 		};
