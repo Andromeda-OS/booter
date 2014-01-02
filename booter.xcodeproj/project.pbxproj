@@ -948,7 +948,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "mkdir `dirname ${SCRIPT_OUTPUT_FILE_0}`\ncp ${SCRIPT_INPUT_FILE_0} ${SCRIPT_OUTPUT_FILE_0}";
+			shellScript = "mkdir -p `dirname \"${SCRIPT_OUTPUT_FILE_0}\"`\ncp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
 			showEnvVarsInLog = 0;
 		};
 		1F44659B1869F2F9008660CA /* Compile boot0 */ = {
@@ -1050,7 +1050,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "mkdir -p `dirname \"${SCRIPT_OUTPUT_FILE_0}\"\ncp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
+			shellScript = "mkdir -p `dirname \"${SCRIPT_OUTPUT_FILE_0}\"`\ncp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
