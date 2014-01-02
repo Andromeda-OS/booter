@@ -31,6 +31,9 @@
 #include <stdarg.h>
 #include <stddef.h>
 
+// This line prevents symbol collisions on the functions defined below.
+#define _STRING_H_
+
 /*
  * string.c
  */
