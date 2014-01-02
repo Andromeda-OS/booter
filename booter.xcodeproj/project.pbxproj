@@ -245,7 +245,7 @@
 		1F7F98D11875C0D600752D3F /* xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xml.h; sourceTree = "<group>"; };
 		1F7F99011875C14C00752D3F /* Kernel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kernel.xcodeproj; path = ../Kernel/Kernel.xcodeproj; sourceTree = "<group>"; };
 		1F7F992B1875C5E000752D3F /* namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = namespace.h; sourceTree = "<group>"; };
-		1FA47040187233F9008DA9B3 /* liblibsa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibsa.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FA47040187233F9008DA9B3 /* libsa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsa.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA4704418723455008DA9B3 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
 		1FA4704518723455008DA9B3 /* libsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libsa.h; sourceTree = "<group>"; };
 		1FA4704618723455008DA9B3 /* memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memory.h; sourceTree = "<group>"; };
@@ -336,7 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				1F0000A7186B6F5A0026B0FA /* machOconv */,
-				1FA47040187233F9008DA9B3 /* liblibsa.a */,
+				1FA47040187233F9008DA9B3 /* libsa.a */,
 				1F2D3C041874C9410041D2CB /* librcz.a */,
 				1F7F989F1875C07F00752D3F /* libsaio.a */,
 			);
@@ -533,9 +533,9 @@
 			productReference = 1F0000A7186B6F5A0026B0FA /* machOconv */;
 			productType = "com.apple.product-type.tool";
 		};
-		1F2D3C031874C9410041D2CB /* rcz */ = {
+		1F2D3C031874C9410041D2CB /* librcz */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1F2D3C071874C9410041D2CB /* Build configuration list for PBXNativeTarget "rcz" */;
+			buildConfigurationList = 1F2D3C071874C9410041D2CB /* Build configuration list for PBXNativeTarget "librcz" */;
 			buildPhases = (
 				1F2D3C001874C9410041D2CB /* Sources */,
 				1F2D3C011874C9410041D2CB /* Frameworks */,
@@ -545,14 +545,14 @@
 			);
 			dependencies = (
 			);
-			name = rcz;
+			name = librcz;
 			productName = rcz;
 			productReference = 1F2D3C041874C9410041D2CB /* librcz.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		1F7F989E1875C07F00752D3F /* saio */ = {
+		1F7F989E1875C07F00752D3F /* libsaio */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1F7F98A01875C07F00752D3F /* Build configuration list for PBXNativeTarget "saio" */;
+			buildConfigurationList = 1F7F98A01875C07F00752D3F /* Build configuration list for PBXNativeTarget "libsaio" */;
 			buildPhases = (
 				1F7F989B1875C07F00752D3F /* Sources */,
 				1F7F989C1875C07F00752D3F /* Frameworks */,
@@ -563,7 +563,7 @@
 			dependencies = (
 				1F7F991E1875C16900752D3F /* PBXTargetDependency */,
 			);
-			name = saio;
+			name = libsaio;
 			productName = saio;
 			productReference = 1F7F989F1875C07F00752D3F /* libsaio.a */;
 			productType = "com.apple.product-type.library.static";
@@ -582,7 +582,7 @@
 			);
 			name = libsa;
 			productName = libsa;
-			productReference = 1FA47040187233F9008DA9B3 /* liblibsa.a */;
+			productReference = 1FA47040187233F9008DA9B3 /* libsa.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -616,8 +616,8 @@
 				1F3029BE186A364A009F0246 /* boot1h */,
 				1F0000A6186B6F5A0026B0FA /* machOconv */,
 				1FA4703F187233F9008DA9B3 /* libsa */,
-				1F2D3C031874C9410041D2CB /* rcz */,
-				1F7F989E1875C07F00752D3F /* saio */,
+				1F7F989E1875C07F00752D3F /* libsaio */,
+				1F2D3C031874C9410041D2CB /* librcz */,
 			);
 		};
 /* End PBXProject section */
@@ -970,7 +970,7 @@
 					"-fno-builtin",
 					"-static",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = rcz;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -1009,7 +1009,7 @@
 					"-fno-builtin",
 					"-static",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = rcz;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -1108,7 +1108,7 @@
 					"-mno-sse2",
 					"-mfpmath=387",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = saio;
 				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wno-visibility";
 			};
@@ -1165,7 +1165,7 @@
 					"-mno-sse2",
 					"-mfpmath=387",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = saio;
 				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wno-visibility";
 			};
@@ -1214,7 +1214,7 @@
 					"-mfpmath=387",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = sa;
 				PUBLIC_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
 				SDKROOT = macosx;
 			};
@@ -1259,7 +1259,7 @@
 					"-mfpmath=387",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = sa;
 				PUBLIC_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
 				SDKROOT = macosx;
 			};
@@ -1291,7 +1291,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1F2D3C071874C9410041D2CB /* Build configuration list for PBXNativeTarget "rcz" */ = {
+		1F2D3C071874C9410041D2CB /* Build configuration list for PBXNativeTarget "librcz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F2D3C051874C9410041D2CB /* Debug */,
@@ -1327,7 +1327,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1F7F98A01875C07F00752D3F /* Build configuration list for PBXNativeTarget "saio" */ = {
+		1F7F98A01875C07F00752D3F /* Build configuration list for PBXNativeTarget "libsaio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F7F98A11875C07F00752D3F /* Debug */,
