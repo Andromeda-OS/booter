@@ -157,7 +157,7 @@ MD5Init (context)
 void
 MD5Update (context, input, inputLen)
 	MD5_CTX *context;
-	const unsigned char *input;
+	const void *input;
 	unsigned int inputLen;
 {
 	unsigned int i, index, partLen;
