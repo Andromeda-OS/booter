@@ -98,7 +98,7 @@ static int countdown( const char * msg, int row, int timeout )
 
     for ( time = time18(), timeout++; timeout > 0; )
     {
-        if (ch = readKeyboardStatus())
+        if ((ch = readKeyboardStatus()))
             break;
 
         // Count can be interrupted by holding down shift,
