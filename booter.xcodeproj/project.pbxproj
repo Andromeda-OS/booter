@@ -25,6 +25,7 @@
 			buildPhases = (
 				1F3ED96218762C040066EF9F /* Assemble First Stage */,
 				1F3ED96318762C2D0066EF9F /* Combine Booter Components */,
+				1F3ED96518762D820066EF9F /* Install Booter */,
 			);
 			dependencies = (
 				1F3ED96018762BDF0066EF9F /* PBXTargetDependency */,
@@ -931,6 +932,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "dd if=${SCRIPT_INPUT_FILE_0} of=${SCRIPT_OUTPUT_FILE_0} conv=sync bs=2k seek=1";
+			showEnvVarsInLog = 0;
+		};
+		1F3ED96518762D820066EF9F /* Install Booter */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/cdboot",
+			);
+			name = "Install Booter";
+			outputPaths = (
+				"$(DSTROOT)/usr/standalone/i386/cdboot",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "mkdir `dirname ${SCRIPT_OUTPUT_FILE_0}`\ncp ${SCRIPT_INPUT_FILE_0} ${SCRIPT_OUTPUT_FILE_0}";
 			showEnvVarsInLog = 0;
 		};
 		1F44659B1869F2F9008660CA /* Compile boot0 */ = {
