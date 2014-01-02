@@ -680,6 +680,8 @@
 			buildPhases = (
 				1FDBEB1E1875FD2500D03F4F /* Sources */,
 				1FDBEB1F1875FD2500D03F4F /* Frameworks */,
+				1FBEC61618760A5C006DAC9F /* Convert Booter File */,
+				1FBEC61818760B04006DAC9F /* Install Booter */,
 			);
 			buildRules = (
 			);
@@ -891,6 +893,40 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "cp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
+			showEnvVarsInLog = 0;
+		};
+		1FBEC61618760A5C006DAC9F /* Convert Booter File */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/boot2",
+			);
+			name = "Convert Booter File";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/boot",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/machOconv\" \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"\n\n# If the booter is too big, it cannot be used.\nsize=`ls -l ${SCRIPT_OUTPUT_FILE_0} | awk '{print $5}'`\nif [[ \"$size\" > \"${MAXBOOTSIZE}\" ]]; then\n    echo \"error: Booter executable too big (larger than ${MAXBOOTSIZE} bytes)\"\n    rm \"${SCRIPT_OUTPUT_FILE_0}\"\n    exit 1\nfi";
+			showEnvVarsInLog = 0;
+		};
+		1FBEC61818760B04006DAC9F /* Install Booter */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/boot",
+			);
+			name = "Install Booter";
+			outputPaths = (
+				"$(DSTROOT)/usr/standalone/i386/boot",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "mkdir -p `dirname \"${SCRIPT_OUTPUT_FILE_0}\"\ncp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1458,6 +1494,7 @@
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MAXBOOTSIZE = 65024;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-Os",
@@ -1523,6 +1560,7 @@
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MAXBOOTSIZE = 65024;
 				OTHER_CFLAGS = (
 					"-Os",
 					"-Oz",
