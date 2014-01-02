@@ -20,6 +20,7 @@
  * @APPLE_LICENSE_HEADER_END@
  */
 
+#if UFS_SUPPORT
 extern long UFSInitPartition(CICell ih);
 extern long UFSLoadFile(CICell ih, char * filePath);
 extern long UFSReadFile( CICell ih, char * filePath, void * base, unsigned long offset, unsigned long length );
@@ -29,4 +30,5 @@ extern long UFSGetDirEntry(CICell ih, char * dirPath, long * dirIndex,
 extern void UFSGetDescription(CICell ih, char *str, long strMaxLen);
 extern long UFSGetFileBlock(CICell ih, char *str, unsigned long long *firstBlock);
 extern long UFSGetUUID(CICell ih, char *uuidStr);
+#endif
 

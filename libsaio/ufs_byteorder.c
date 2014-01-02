@@ -26,6 +26,7 @@
  * All rights reserved.
  */
 
+#if UFS_SUPPORT
 #include <sys/types.h>
 #include <sys/param.h>
 #include <sys/vnode.h>
@@ -169,3 +170,4 @@ byte_swap_dir_block_in(char *addr, int count)
 			break;
 	}
 }
+#endif

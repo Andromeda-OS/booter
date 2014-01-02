@@ -39,6 +39,8 @@
 #include <sys/vnode.h>
 #include <sys/buf.h>
 #include <sys/disk.h>
+
+#if UFS_SUPPORT
 #include <ufs/ufs/quota.h>
 #include <ufs/ufs/dinode.h>
 #include <ufs/ufs/dir.h>
@@ -52,5 +54,6 @@ void byte_swap_superblock(struct fs *sb);
 void byte_swap_dinode_in(struct dinode *di);
 void byte_swap_dir_block_in(char *addr, int count);
 void byte_swap_inode_in(struct dinode *dc, struct dinode *ic);
+#endif
 
 #endif /* !__LIBSAIO_UFS_BYTEORDER_H */

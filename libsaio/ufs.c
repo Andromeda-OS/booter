@@ -27,6 +27,7 @@
  *  DRI: Josh de Cesare
  */
 
+#if UFS_SUPPORT
 #include <sl.h>
 
 #include "ufs.h"
@@ -523,3 +524,4 @@ static long ReadFile( InodePtr fileInode, unsigned long * length, void * base, l
 
     return bytesLeft;
 }
+#endif
