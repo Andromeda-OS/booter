@@ -778,7 +778,7 @@ static BVRef diskScanAPMBootVolumes( int biosdev, int * countPtr )
         {
             int error;
             DPME *dpme_p = (DPME *)buffer;
-            UInt32 i, npart = UINT_MAX;
+            UInt32 i, npart = UINT32_MAX;
             BVRef bvr;
 
             map->biosdev = biosdev;
