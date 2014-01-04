@@ -28,6 +28,8 @@
 				1F3ED96518762D820066EF9F /* Install Booter */,
 			);
 			dependencies = (
+				1F26D269187739FD0069D655 /* PBXTargetDependency */,
+				1F26D25F187739FA0069D655 /* PBXTargetDependency */,
 				1F3ED96018762BDF0066EF9F /* PBXTargetDependency */,
 			);
 			name = cdboot;
@@ -143,6 +145,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1F26D25E187739FA0069D655 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F3029BE186A364A009F0246;
+			remoteInfo = boot1h;
+		};
+		1F26D268187739FD0069D655 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F4465971869F2F2008660CA;
+			remoteInfo = boot0;
+		};
 		1F3ED95F18762BDF0066EF9F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
@@ -1139,6 +1155,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F26D25F187739FA0069D655 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F3029BE186A364A009F0246 /* boot1h */;
+			targetProxy = 1F26D25E187739FA0069D655 /* PBXContainerItemProxy */;
+		};
+		1F26D269187739FD0069D655 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F4465971869F2F2008660CA /* boot0 */;
+			targetProxy = 1F26D268187739FD0069D655 /* PBXContainerItemProxy */;
+		};
 		1F3ED96018762BDF0066EF9F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1FDBEB211875FD2500D03F4F /* boot2 */;
@@ -1787,6 +1813,7 @@
 				1F3ED95518762BD40066EF9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F4465981869F2F2008660CA /* Build configuration list for PBXAggregateTarget "boot0" */ = {
 			isa = XCConfigurationList;
