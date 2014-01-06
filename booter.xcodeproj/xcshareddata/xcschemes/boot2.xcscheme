@@ -8,8 +8,8 @@
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
             buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
@@ -17,6 +17,20 @@
                BlueprintIdentifier = "1FDBEB211875FD2500D03F4F"
                BuildableName = "boot2"
                BlueprintName = "boot2"
+               ReferencedContainer = "container:booter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1F057A68187B4F2900E1C8E5"
+               BuildableName = "startupfiletool"
+               BlueprintName = "startupfiletool"
                ReferencedContainer = "container:booter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +46,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1FDBEB211875FD2500D03F4F"
-            BuildableName = "boot2"
-            BlueprintName = "boot2"
+            BlueprintIdentifier = "1F057A68187B4F2900E1C8E5"
+            BuildableName = "startupfiletool"
+            BlueprintName = "startupfiletool"
             ReferencedContainer = "container:booter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,9 +65,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1FDBEB211875FD2500D03F4F"
-            BuildableName = "boot2"
-            BlueprintName = "boot2"
+            BlueprintIdentifier = "1F057A68187B4F2900E1C8E5"
+            BuildableName = "startupfiletool"
+            BlueprintName = "startupfiletool"
             ReferencedContainer = "container:booter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,9 +83,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1FDBEB211875FD2500D03F4F"
-            BuildableName = "boot2"
-            BlueprintName = "boot2"
+            BlueprintIdentifier = "1F057A68187B4F2900E1C8E5"
+            BuildableName = "startupfiletool"
+            BlueprintName = "startupfiletool"
             ReferencedContainer = "container:booter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
