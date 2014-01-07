@@ -192,8 +192,6 @@ static int Biosread( int biosdev, unsigned int secno )
     }
     divisor = bps / BPS;
 
-    DEBUG_DISK(("Biosread dev %x sec %d bps %d\n", biosdev, secno, bps));
-
     // To read the disk sectors, use EBIOS if we can. Otherwise,
     // revert to the standard BIOS calls.
 

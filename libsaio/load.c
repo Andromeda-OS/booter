@@ -33,7 +33,8 @@
 #include <sl.h>
 
 static long DecodeSegment(long cmdBase, unsigned int*load_addr, unsigned int *load_size);
-static long DecodeUnixThread(long cmdBase, unsigned int *entry);
+static long DecodeSegment64(long cmdBase, unsigned int *load_addr, unsigned int *load_size);
+static long DecodeUnixThread(long cmdBase, unsigned int *entry, int use_64bit_load_command);
 
 
 static unsigned long gBinaryAddress;
@@ -94,9 +95,14 @@ long DecodeMachO(void *binary, entry_t *rentry, char **raddr, int *rsize)
     cmdBase = (unsigned long)gBinaryAddress + sizeof(struct mach_header);
     
     mH = (struct mach_header *)(gBinaryAddress);
-    if (mH->magic != MH_MAGIC) {
+    if (mH->magic != MH_MAGIC && mH->magic != MH_MAGIC_64) {
         error("Mach-O file has bad magic number\n");
         return -1;
+    }
+    
+    if (mH->magic == MH_MAGIC_64) {
+        // 64-bit binaries have a slightly larger mach_header than 32-bit binaries.
+        cmdBase = (unsigned long)gBinaryAddress + sizeof(struct mach_header_64);
     }
     
 #if DEBUG
@@ -128,18 +134,31 @@ long DecodeMachO(void *binary, entry_t *rentry, char **raddr, int *rsize)
                 }
                 break;
                 
+            case LC_SEGMENT_64:
+                ret = DecodeSegment64(cmdBase, &load_addr, &load_size);
+                if (ret == 0 && load_size != 0 && load_addr >= KERNEL_ADDR) {
+                    vmaddr = min(vmaddr, load_addr);
+                    vmend = max(vmend, load_addr + load_size);
+                }
+                break;
+                
             case LC_UNIXTHREAD:
-                ret = DecodeUnixThread(cmdBase, &entry);
+                ret = DecodeUnixThread(cmdBase, &entry, mH->magic == MH_MAGIC_64);
                 break;
                 
             default:
-#if NOTDEF
-                printf("Ignoring cmd type %d.\n", (unsigned)cmd);
+#if 0
+                verbose("Ignoring cmd type %d.\n", (unsigned)cmd);
 #endif
                 break;
         }
         
-        if (ret != 0) return -1;
+        if (ret != 0) {
+#if DEBUG
+            printf("DecodeMachO() returning -1 (ret = %d)", ret);
+#endif
+            return -1;
+        }
         
         cmdBase += cmdsize;
     }
@@ -148,6 +167,9 @@ long DecodeMachO(void *binary, entry_t *rentry, char **raddr, int *rsize)
     *rsize = vmend - vmaddr;
     *raddr = (char *)vmaddr;
     
+#if DEBUG
+    printf("DecodeMachO() returning %ld\n", ret);
+#endif
     return ret;
 }
 
@@ -203,15 +225,83 @@ static long DecodeSegment(long cmdBase, unsigned int *load_addr, unsigned int *l
     return 0;
 }
 
-
-static long DecodeUnixThread(long cmdBase, unsigned int *entry)
+static long DecodeSegment64(long cmdBase, unsigned int *load_addr, unsigned int *load_size)
 {
-    i386_thread_state_t *i386ThreadState;
+    struct segment_command_64 *segCmd;
+    unsigned long vmaddr, fileaddr;
+    long   vmsize, filesize;
     
-    i386ThreadState = (i386_thread_state_t *)
-    (cmdBase + sizeof(struct thread_command) + 8);
+    segCmd = (struct segment_command_64 *)cmdBase;
     
-    *entry = i386ThreadState->eip;
+    vmaddr = (segCmd->vmaddr & 0x3fffffff);
+    vmsize = segCmd->vmsize;
+    
+    fileaddr = (gBinaryAddress + segCmd->fileoff);
+    filesize = segCmd->filesize;
+    
+    if (filesize == 0) {
+        *load_addr = ~0;
+        *load_size = 0;
+        return 0;
+    }
+    
+#if DEBUG
+    printf("segname: %s, vmaddr: %x, vmsize: %x, fileoff: %x, filesize: %x, nsects: %d, flags: %x.\n",
+           segCmd->segname, (unsigned)vmaddr, (unsigned)vmsize, (unsigned)fileaddr, (unsigned)filesize,
+           (unsigned) segCmd->nsects, (unsigned)segCmd->flags);
+    getc();
+#endif
+    
+    if (! ((vmaddr >= KERNEL_ADDR &&
+            (vmaddr + vmsize) <= (KERNEL_ADDR + KERNEL_LEN)) ||
+           (vmaddr >= HIB_ADDR &&
+            (vmaddr + vmsize) <= (HIB_ADDR + HIB_LEN)))) {
+               stop("Kernel overflows available space");
+           }
+    
+    if (vmsize && (strcmp(segCmd->segname, "__PRELINK") == 0)) {
+        gHaveKernelCache = 1;
+    }
+    
+    // Don't copy segments that have a zero vmsize. (It is my
+    // understanding that these segments aren't intended to be
+    // copied into memory in the first place.)
+    if (vmsize != 0) {
+        // Copy from file load area.
+        bcopy((char *)fileaddr, (char *)vmaddr, filesize);
+        
+        // Zero space at the end of the segment.
+        bzero((char *)(vmaddr + filesize), vmsize - filesize);
+    }
+    
+    *load_addr = vmaddr;
+    *load_size = vmsize;
+    
+#if DEBUG
+    printf("Done with segname %s\n", segCmd->segname);
+#endif
+    return 0;
+}
+
+
+static long DecodeUnixThread(long cmdBase, unsigned int *entry, int use_64bit_load_command)
+{
+    if (use_64bit_load_command) {
+        x86_thread_state64_t *threadState = (x86_thread_state64_t *)(cmdBase + sizeof(struct thread_command) + 8);
+        *entry = (threadState->rip & 0x3fffffff);
+    } else {
+        i386_thread_state_t *i386ThreadState;
+        
+        i386ThreadState = (i386_thread_state_t *)
+        (cmdBase + sizeof(struct thread_command) + 8);
+        
+        *entry = (i386ThreadState->eip & 0x3fffffff);
+    }
+    
+#if DEBUG
+    printf("Kernel entry point: %x\n", *entry);
+    getc();
+#endif
     
     return 0;
 }

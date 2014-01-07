@@ -1563,6 +1563,7 @@
 					"__ARCHITECTURE__=\\\"i386\\\"",
 					SAIO_INTERNAL_USER,
 					RCZ_COMPRESSED_FILE_SUPPORT,
+					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;

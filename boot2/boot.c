@@ -132,6 +132,9 @@ static int ExecKernel(void *binary)
     // Load boot drivers from the specifed root path.
 
     if (!gHaveKernelCache) {
+#if DEBUG
+        printf("Loading drivers...\n");
+#endif
           LoadDrivers("/");
     }
 
@@ -183,6 +186,9 @@ static int ExecKernel(void *binary)
 
     // Jump to kernel's entry point. There's no going back now.
 
+#if DEBUG
+    printf("calling startprog()...\n");
+#endif
     startprog( kernelEntry, bootArgs );
 
     // Not reached
@@ -385,7 +391,7 @@ void boot(int biosdev)
 
         clearActivityIndicator();
 #if DEBUG
-        printf("Pausing...");
+        printf("Pausing...\n");
         sleep(8);
 #endif
 
@@ -401,7 +407,11 @@ void boot(int biosdev)
         } else {
             /* Won't return if successful. */
             ret = ExecKernel(binary);
+            verbose("ExecKernel() returned %d\n", ret);
         }
+        
+        verbose("Cannot exec kernel, trying again...\n");
+        sleep(8);
 
     } /* while(1) */
     

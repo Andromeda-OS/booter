@@ -162,17 +162,6 @@ unsigned long getMemoryMap( MemoryRange *   rangeArray,
     // Copy out data
     bcopy((char *)BIOS_ADDR, rangeArray, ((char *)range - (char *)BIOS_ADDR));
 
-#if DEBUG
-    {
-        int i;
-        printf("%d total ranges\n", count);getc();
-        for (i=0, range = rangeArray; i<count; i++, range++) {
-            printf("range: type %d, base 0x%x, length 0x%x\n",
-                   range->type, (unsigned int)range->base, (unsigned int)range->length); getc();
-        }
-    }
-#endif
-
     return count;
 }
 
