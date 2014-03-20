@@ -1595,7 +1595,10 @@
 				PRODUCT_NAME = saio;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				WARNING_CFLAGS = "-Wno-visibility";
+				WARNING_CFLAGS = (
+					"-Wno-visibility",
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -1654,7 +1657,10 @@
 				PRODUCT_NAME = saio;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				WARNING_CFLAGS = "-Wno-visibility";
+				WARNING_CFLAGS = (
+					"-Wno-visibility",
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};
@@ -1885,6 +1891,7 @@
 		1FE6F358186920A8003ED90F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				WARNING_CFLAGS = "-Wno-unused-function";
 				XNU_INSTALL_ROOT = "$(PROJECT_TEMP_ROOT)/xnu";
 			};
 			name = Debug;
@@ -1892,6 +1899,7 @@
 		1FE6F359186920A8003ED90F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				WARNING_CFLAGS = "-Wno-unused-function";
 				XNU_INSTALL_ROOT = "$(DSTROOT)";
 			};
 			name = Release;
