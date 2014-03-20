@@ -1107,7 +1107,7 @@
 			);
 			name = "Install Booter";
 			outputPaths = (
-				"$(DSTROOT)/usr/standalone/i386/boot",
+				"$(DSTROOT)/usr/standalone/i386/boot2",
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
