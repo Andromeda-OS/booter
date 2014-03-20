@@ -1588,10 +1588,8 @@
 					"-fno-builtin",
 					"-static",
 					"-fomit-frame-pointer",
-					"-mpreferred-stack-boundary=2",
 					"-fno-align-functions",
 					"-mno-sse2",
-					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				PRODUCT_NAME = saio;
@@ -1649,10 +1647,8 @@
 					"-fno-builtin",
 					"-static",
 					"-fomit-frame-pointer",
-					"-mpreferred-stack-boundary=2",
 					"-fno-align-functions",
 					"-mno-sse2",
-					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				PRODUCT_NAME = saio;
@@ -1700,10 +1696,7 @@
 					"-Oz",
 					"-static",
 					"-fomit-frame-pointer",
-					"-mpreferred-stack-boundary=2",
 					"-fno-align-functions",
-					"-mno-sse2",
-					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
@@ -1748,10 +1741,7 @@
 					"-Oz",
 					"-static",
 					"-fomit-frame-pointer",
-					"-mpreferred-stack-boundary=2",
 					"-fno-align-functions",
-					"-mno-sse2",
-					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
@@ -1811,10 +1801,8 @@
 					"-fno-builtin",
 					"-static",
 					"-fomit-frame-pointer",
-					"-mpreferred-stack-boundary=2",
 					"-fno-align-functions",
 					"-mno-sse2",
-					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				OTHER_LDFLAGS = (
@@ -1876,10 +1864,8 @@
 					"-fno-builtin",
 					"-static",
 					"-fomit-frame-pointer",
-					"-mpreferred-stack-boundary=2",
 					"-fno-align-functions",
 					"-mno-sse2",
-					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				OTHER_LDFLAGS = (
