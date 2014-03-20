@@ -87,14 +87,13 @@ static BOOL gUnloadPXEOnExit = 0;
 
 static void zeroBSS()
 {
-    extern char _DATA__bss__begin, _DATA__bss__end;
-    extern char _DATA__common__begin, _DATA__common__end;
+    extern char bss_begin asm("section$start$__DATA$__bss");
+    extern char bss_end asm("section$end$__DATA$__bss");
+    extern char common_begin asm("section$start$__DATA$__common");
+    extern char common_end asm("section$end$__DATA$__common");
 
-    bzero( &_DATA__bss__begin,
-           (&_DATA__bss__end - &_DATA__bss__begin) );
-
-    bzero( &_DATA__common__begin, 
-           (&_DATA__common__end - &_DATA__common__begin) );
+    bzero(&bss_begin, (&bss_end - &bss_begin));
+    bzero(&common_begin, (&common_end - &common_begin));
 }
 
 //==========================================================================
