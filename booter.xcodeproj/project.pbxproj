@@ -1590,6 +1590,8 @@
 					"-fomit-frame-pointer",
 					"-fno-align-functions",
 					"-mno-sse2",
+					"-mno-sse",
+					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				PRODUCT_NAME = saio;
@@ -1652,6 +1654,8 @@
 					"-fomit-frame-pointer",
 					"-fno-align-functions",
 					"-mno-sse2",
+					"-mno-sse",
+					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				PRODUCT_NAME = saio;
