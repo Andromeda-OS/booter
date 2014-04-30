@@ -1704,9 +1704,13 @@
 				OTHER_CFLAGS = (
 					"-Os",
 					"-Oz",
+					"-fno-builtin",
 					"-static",
 					"-fomit-frame-pointer",
 					"-fno-align-functions",
+					"-mno-sse2",
+					"-mno-sse",
+					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
@@ -1749,9 +1753,13 @@
 				OTHER_CFLAGS = (
 					"-Os",
 					"-Oz",
+					"-fno-builtin",
 					"-static",
 					"-fomit-frame-pointer",
 					"-fno-align-functions",
+					"-mno-sse2",
+					"-mno-sse",
+					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
@@ -1813,6 +1821,8 @@
 					"-fomit-frame-pointer",
 					"-fno-align-functions",
 					"-mno-sse2",
+					"-mno-sse",
+					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				OTHER_LDFLAGS = (
@@ -1876,6 +1886,8 @@
 					"-fomit-frame-pointer",
 					"-fno-align-functions",
 					"-mno-sse2",
+					"-mno-sse",
+					"-mfpmath=387",
 					"-fno-stack-protector",
 				);
 				OTHER_LDFLAGS = (
