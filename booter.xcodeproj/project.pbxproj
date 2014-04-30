@@ -833,7 +833,7 @@
 		1FE6F354186920A8003ED90F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 1FE6F357186920A8003ED90F /* Build configuration list for PBXProject "booter" */;
 			compatibilityVersion = "Xcode 3.2";
