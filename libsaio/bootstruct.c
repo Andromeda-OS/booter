@@ -41,6 +41,7 @@ PrivateBootInfo_t *bootInfo;
 Node              *gMemoryMapNode;
 
 static char platformName[64];
+static uint64_t FSBFrequency = 266 * (1000 * 1000); // A semi-arbitrary number of megahertz.
 
 void initKernBootStruct( int biosdev )
 {
@@ -89,6 +90,13 @@ void initKernBootStruct( int biosdev )
         nameLen = strlen(platformName) + 1;
         DT__AddProperty(node, "compatible", nameLen, platformName);
         DT__AddProperty(node, "model", nameLen, platformName);
+        
+        Node *efi_node = DT__FindNode("/efi/platform", true);
+        if (efi_node == 0) {
+            stop("Couldn't create \"/efi/platform\" node, mach_kernel will not boot correctly");
+        }
+        
+        DT__AddProperty(efi_node, "FSBFrequency", sizeof(FSBFrequency), &FSBFrequency);
 
         gMemoryMapNode = DT__FindNode("/chosen/memory-map", true);
 
