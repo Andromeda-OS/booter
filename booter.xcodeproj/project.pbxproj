@@ -209,40 +209,19 @@
 			remoteGlobalIDString = 1F37E27E18592E42001B9501;
 			remoteInfo = ctfmerge;
 		};
-		1F7F99151875C14C00752D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F72629B1859480E00FEE05A;
-			remoteInfo = kmod;
-		};
-		1F7F99171875C14C00752D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F7262A818594A9500FEE05A;
-			remoteInfo = "kmodc++";
-		};
-		1F7F99191875C14C00752D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F7262B418594C2000FEE05A;
-			remoteInfo = libsyscall;
-		};
-		1F7F991B1875C14C00752D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F99DED218663CFB00A7516F;
-			remoteInfo = libsystem_kernel;
-		};
 		1F7F991D1875C16900752D3F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 1F42B3DD18592FE90023356E;
 			remoteInfo = mach_kernel;
+		};
+		1FAA068C1995A7B900D871C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F057A68187B4F2900E1C8E5;
+			remoteInfo = startupfiletool;
 		};
 		1FDBEB3F1875FD5800D03F4F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -589,10 +568,6 @@
 				1F7F99101875C14C00752D3F /* libelf.a */,
 				1F7F99121875C14C00752D3F /* ctfconvert */,
 				1F7F99141875C14C00752D3F /* ctfmerge */,
-				1F7F99161875C14C00752D3F /* libkmod.a */,
-				1F7F99181875C14C00752D3F /* libkmodc++.a */,
-				1F7F991A1875C14C00752D3F /* libsyscall.a */,
-				1F7F991C1875C14C00752D3F /* libsystem_kernel.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -818,6 +793,7 @@
 			dependencies = (
 				1F057A87187B50C700E1C8E5 /* PBXTargetDependency */,
 				1F057A89187B50C700E1C8E5 /* PBXTargetDependency */,
+				1FAA068D1995A7B900D871C6 /* PBXTargetDependency */,
 				1FDBEB401875FD5800D03F4F /* PBXTargetDependency */,
 				1FDBEB421875FD5800D03F4F /* PBXTargetDependency */,
 				1FDBEB441875FD5800D03F4F /* PBXTargetDependency */,
@@ -894,34 +870,6 @@
 			fileType = "compiled.mach-o.executable";
 			path = ctfmerge;
 			remoteRef = 1F7F99131875C14C00752D3F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F7F99161875C14C00752D3F /* libkmod.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libkmod.a;
-			remoteRef = 1F7F99151875C14C00752D3F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F7F99181875C14C00752D3F /* libkmodc++.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libkmodc++.a";
-			remoteRef = 1F7F99171875C14C00752D3F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F7F991A1875C14C00752D3F /* libsyscall.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libsyscall.a;
-			remoteRef = 1F7F99191875C14C00752D3F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F7F991C1875C14C00752D3F /* libsystem_kernel.dylib */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = libsystem_kernel.dylib;
-			remoteRef = 1F7F991B1875C14C00752D3F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1237,6 +1185,11 @@
 			isa = PBXTargetDependency;
 			name = mach_kernel;
 			targetProxy = 1F7F991D1875C16900752D3F /* PBXContainerItemProxy */;
+		};
+		1FAA068D1995A7B900D871C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F057A68187B4F2900E1C8E5 /* startupfiletool */;
+			targetProxy = 1FAA068C1995A7B900D871C6 /* PBXContainerItemProxy */;
 		};
 		1FDBEB401875FD5800D03F4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1840,6 +1793,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
 				boot2_address = 20200;
 			};
@@ -1905,6 +1859,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
 				boot2_address = 20200;
 			};
