@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>Kernel Flags</key>
-	<string>-v</string>
+	<string>-v debug=0x8</string>
 </dict>
 </plist>
