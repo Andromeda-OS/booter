@@ -53,6 +53,8 @@ struct DriverInfo {
     long plistLength;
     void *moduleAddr;
     long moduleLength;
+    char *pathAddr;
+    long pathLength;
 };
 typedef struct DriverInfo DriverInfo, *DriverInfoPtr;
 
@@ -487,6 +489,7 @@ LoadMatchedModules( void )
                 driver = (DriverInfoPtr)driverAddr;
                 driver->plistAddr = (char *)(driverAddr + sizeof(DriverInfo));
                 driver->plistLength = module->plistLength;
+
                 if (length != 0)
                 {
                     driver->moduleAddr = (void *)(driverAddr + sizeof(DriverInfo) +
@@ -499,11 +502,18 @@ LoadMatchedModules( void )
                     driver->moduleLength = 0;
                 }
 
-                // Save the plist and module.
+                // Save the plist, path and module.
                 strcpy(driver->plistAddr, module->plistAddr);
                 if (length != 0)
                 {
                     memcpy(driver->moduleAddr, driverModuleAddr, length);
+                }
+
+                if (module->driverPath != 0) {
+                    driver->pathAddr = (void *)(driverAddr + sizeof(DriverInfo) + module->plistLength + driver->moduleLength);
+                    driver->pathLength = strlen(module->driverPath);
+                    memcpy(driver->pathAddr, module->driverPath, driver->pathLength * sizeof(char));
+                    driverLength += driver->pathLength * sizeof(char);
                 }
 
                 // Add an entry to the memory map.
