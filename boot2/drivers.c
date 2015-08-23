@@ -2,7 +2,7 @@
  * Copyright (c) 1999-2003 Apple Computer, Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
- * 
+ *
  * Portions Copyright (c) 1999-2003 Apple Computer, Inc.  All Rights
  * Reserved.  This file contains Original Code and/or Modifications of
  * Original Code as defined in and that are subject to the Apple Public
@@ -10,7 +10,7 @@
  * except in compliance with the License.  Please obtain a copy of the
  * License at http://www.apple.com/publicsource and read it before using
  * this file.
- * 
+ *
  * The Original Code and all software distributed under the License are
  * distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
  * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
@@ -18,7 +18,7 @@
  * FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT.  Please see the
  * License for the specific language governing rights and limitations
  * under the License.
- * 
+ *
  * @APPLE_LICENSE_HEADER_END@
  */
 /*
@@ -38,21 +38,21 @@
 #include "bootstruct.h"
 #include "xml.h"
 
-struct Module {  
-  struct Module *nextModule;
-  long          willLoad;
-  TagPtr        dict;
-  char          *plistAddr;
-  long          plistLength;
-  char          *driverPath;
+struct Module {
+    struct Module *nextModule;
+    long          willLoad;
+    TagPtr        dict;
+    char          *plistAddr;
+    long          plistLength;
+    char          *driverPath;
 };
 typedef struct Module Module, *ModulePtr;
 
 struct DriverInfo {
-  char *plistAddr;
-  long plistLength;
-  void *moduleAddr;
-  long moduleLength;
+    char *plistAddr;
+    long plistLength;
+    void *moduleAddr;
+    long moduleLength;
 };
 typedef struct DriverInfo DriverInfo, *DriverInfoPtr;
 
@@ -60,20 +60,20 @@ typedef struct DriverInfo DriverInfo, *DriverInfoPtr;
 #define kDriverPackageSignature2 'MOSX'
 
 struct DriversPackage {
-  unsigned long signature1;
-  unsigned long signature2;
-  unsigned long length;
-  unsigned long alder32;
-  unsigned long version;
-  unsigned long numDrivers;
-  unsigned long reserved1;
-  unsigned long reserved2;
+    unsigned long signature1;
+    unsigned long signature2;
+    unsigned long length;
+    unsigned long alder32;
+    unsigned long version;
+    unsigned long numDrivers;
+    unsigned long reserved1;
+    unsigned long reserved2;
 };
 typedef struct DriversPackage DriversPackage;
 
 enum {
-  kCFBundleType2,
-  kCFBundleType3
+    kCFBundleType2,
+    kCFBundleType3
 };
 
 static unsigned long Alder32( unsigned char * buffer, long length );
@@ -106,28 +106,28 @@ Alder32( unsigned char * buffer, long length )
 {
     long          cnt;
     unsigned long result, lowHalf, highHalf;
-    
+
     lowHalf  = 1;
     highHalf = 0;
-  
-	for ( cnt = 0; cnt < length; cnt++ )
+
+    for ( cnt = 0; cnt < length; cnt++ )
     {
         if ((cnt % 5000) == 0)
         {
             lowHalf  %= 65521L;
             highHalf %= 65521L;
         }
-    
+
         lowHalf  += buffer[cnt];
         highHalf += lowHalf;
     }
 
-	lowHalf  %= 65521L;
-	highHalf %= 65521L;
-  
-	result = (highHalf << 16) | lowHalf;
-  
-	return result;
+    lowHalf  %= 65521L;
+    highHalf %= 65521L;
+
+    result = (highHalf << 16) | lowHalf;
+
+    return result;
 }
 
 
@@ -234,14 +234,14 @@ FileLoadDrivers( char * dirSpec, long plugin )
 
         // Make sure this is a directory.
         if ((flags & kFileTypeMask) != kFileTypeDirectory) continue;
-        
+
         // Make sure this is a kext.
         length = strlen(name);
         if (strcmp(name + length - 5, ".kext")) continue;
 
         // Save the file name.
         strcpy(gFileName, name);
-    
+
         // Determine the bundle type.
         sprintf(gTempSpec, "%s/%s", dirSpec, gFileName);
         ret = GetFileInfo(gTempSpec, "Contents", &flags, &time);
@@ -258,7 +258,7 @@ FileLoadDrivers( char * dirSpec, long plugin )
             //printf("LoadDrivers: failed for '%s'/'%s'\n", dirSpec, gFileName);
         }
 
-        if (!plugin) 
+        if (!plugin)
             ret = FileLoadDrivers(gDriverSpec, 1);
     }
 
@@ -266,7 +266,7 @@ FileLoadDrivers( char * dirSpec, long plugin )
 }
 
 //==========================================================================
-// 
+//
 
 static long
 NetLoadDrivers( char * dirSpec )
@@ -280,17 +280,17 @@ NetLoadDrivers( char * dirSpec )
     cnt = strlen(gBootFile);
     while (cnt--) {
         if ((gBootFile[cnt] == '\\')  || (gBootFile[cnt] == ',')) {
-        cnt++;
-        break;
+            cnt++;
+            break;
         }
     }
 #endif
 
     // INTEL modification
     sprintf(gDriverSpec, "%s%s.mkext", dirSpec, bootInfo->bootFile);
-    
+
     verbose("NetLoadDrivers: Loading from [%s]\n", gDriverSpec);
-    
+
     tries = 3;
     while (tries--)
     {
@@ -323,7 +323,7 @@ LoadDriverMKext( char * fileSpec )
         ( GetPackageElement(signature2) != kDriverPackageSignature2) ||
         ( GetPackageElement(length)      > kLoadSize )               ||
         ( GetPackageElement(alder32)    !=
-          Alder32((unsigned char *)&package->version, GetPackageElement(length) - 0x10) ) )
+         Alder32((unsigned char *)&package->version, GetPackageElement(length) - 0x10) ) )
     {
         return -1;
     }
@@ -358,7 +358,7 @@ LoadDriverPList( char * dirSpec, char * name, long bundleType )
 
     do {
         // Save the driver path.
-        
+
         sprintf(gFileSpec, "%s/%s/%s", dirSpec, name,
                 (bundleType == kCFBundleType2) ? "Contents/MacOS/" : "");
         driverPathLength = strlen(gFileSpec) + 1;
@@ -367,7 +367,7 @@ LoadDriverPList( char * dirSpec, char * name, long bundleType )
         if (tmpDriverPath == 0) break;
 
         strcpy(tmpDriverPath, gFileSpec);
-  
+
         // Construct the file spec to the plist, then load it.
 
         sprintf(gFileSpec, "%s/%s/%sInfo.plist", dirSpec, name,
@@ -391,7 +391,7 @@ LoadDriverPList( char * dirSpec, char * name, long bundleType )
 
         module->driverPath = tmpDriverPath;
         module->plistAddr = (void *)malloc(length);
-  
+
         if ((module->driverPath == 0) || (module->plistAddr == 0))
             break;
 
@@ -403,17 +403,17 @@ LoadDriverPList( char * dirSpec, char * name, long bundleType )
 
         strlcpy(module->plistAddr, (char *)kLoadAddr, length);
         module->plistLength = length;
-  
+
         // Add the module to the end of the module list.
-        
+
         if (gModuleHead == 0)
             gModuleHead = module;
         else
             gModuleTail->nextModule = module;
         gModuleTail = module;
-  
+
         // Add the persionalities to the personality list.
-    
+
         if (personalities) personalities = personalities->tag;
         while (personalities != 0)
         {
@@ -421,15 +421,15 @@ LoadDriverPList( char * dirSpec, char * name, long bundleType )
                 gPersonalityHead = personalities->tag;
             else
                 gPersonalityTail->tagNext = personalities->tag;
-            
+
             gPersonalityTail = personalities->tag;
             personalities = personalities->tagNext;
         }
-        
+
         ret = 0;
     }
     while (0);
-    
+
     if ( buffer )        free( buffer );
     if ( tmpDriverPath ) free( tmpDriverPath );
 
@@ -450,7 +450,7 @@ LoadMatchedModules( void )
     long          length, driverAddr, driverLength;
     void          *driverModuleAddr = 0;
 
-  
+
     module = gModuleHead;
 
     while (module != 0)
@@ -473,11 +473,11 @@ LoadMatchedModules( void )
 
             if (length != -1)
             {
-		//driverModuleAddr = (void *)kLoadAddr;
+                //driverModuleAddr = (void *)kLoadAddr;
                 //if (length != 0)
                 //{
-		//    ThinFatFile(&driverModuleAddr, &length);
-		//}
+                //    ThinFatFile(&driverModuleAddr, &length);
+                //}
 
                 // Make make in the image area.
                 driverLength = sizeof(DriverInfo) + module->plistLength + length;
@@ -490,7 +490,7 @@ LoadMatchedModules( void )
                 if (length != 0)
                 {
                     driver->moduleAddr = (void *)(driverAddr + sizeof(DriverInfo) +
-					                     module->plistLength);
+                                                  module->plistLength);
                     driver->moduleLength = length;
                 }
                 else
@@ -541,7 +541,7 @@ MatchLibraries( void )
     do {
         done = 1;
         module = gModuleHead;
-        
+
         while (module != 0)
         {
             if (module->willLoad == 1)
@@ -587,16 +587,16 @@ FindModule( char * name )
 {
     ModulePtr module;
     TagPtr    prop;
-    
+
     module = gModuleHead;
-    
+
     while (module != 0)
     {
         prop = GetProperty(module->dict, kPropCFBundleIdentifier);
         if ((prop != 0) && !strcmp(name, prop->string)) break;
         module = module->nextModule;
     }
-    
+
     return module;
 }
 #endif /* NOTDEF */
@@ -607,31 +607,31 @@ FindModule( char * name )
 static long
 ParseXML( char * buffer, ModulePtr * module, TagPtr * personalities )
 {
-	long       length, pos;
-	TagPtr     moduleDict, required;
-	ModulePtr  tmpModule;
-  
+    long       length, pos;
+    TagPtr     moduleDict, required;
+    ModulePtr  tmpModule;
+
     pos = 0;
-  
+
     while (1)
     {
         length = XMLParseNextTag(buffer + pos, &moduleDict);
         if (length == -1) break;
-    
+
         pos += length;
-    
+
         if (moduleDict == 0) continue;
         if (moduleDict->type == kTagTypeDict) break;
-    
+
         XMLFreeTag(moduleDict);
     }
-  
+
     if (length == -1) return -1;
 
     required = XMLGetProperty(moduleDict, kPropOSBundleRequired);
     if ( (required == 0) ||
-         (required->type != kTagTypeString) ||
-         !strcmp(required->string, "Safe Boot"))
+        (required->type != kTagTypeString) ||
+        !strcmp(required->string, "Safe Boot"))
     {
         XMLFreeTag(moduleDict);
         return -2;
@@ -644,17 +644,17 @@ ParseXML( char * buffer, ModulePtr * module, TagPtr * personalities )
         return -1;
     }
     tmpModule->dict = moduleDict;
-  
+
     // For now, load any module that has OSBundleRequired != "Safe Boot".
 
     tmpModule->willLoad = 1;
 
     *module = tmpModule;
-  
+
     // Get the personalities.
 
     *personalities = XMLGetProperty(moduleDict, kPropIOKitPersonalities);
-  
+
     return 0;
 }
 
@@ -662,14 +662,14 @@ ParseXML( char * buffer, ModulePtr * module, TagPtr * personalities )
 static char gPlatformName[64];
 #endif
 
-long 
+long
 DecodeKernel(void *binary, entry_t *rentry, char **raddr, int *rsize)
 {
     long ret;
     compressed_kernel_header * kernel_header = (compressed_kernel_header *) binary;
     u_int32_t uncompressed_size, size;
     void *buffer;
-  
+
 #if 0
     printf("kernel header:\n");
     printf("signature: 0x%x\n", kernel_header->signature);
@@ -691,10 +691,10 @@ DecodeKernel(void *binary, entry_t *rentry, char **raddr, int *rsize)
         if (kernel_header->root_path[0] && strcmp(gBootFile, kernel_header->root_path))
             return -1;
 #endif
-    
+
         uncompressed_size = OSSwapBigToHostInt32(kernel_header->uncompressed_size);
         binary = buffer = malloc(uncompressed_size);
-    
+
         size = decompress_lzss((u_int8_t *) binary, &kernel_header->data[0],
                                OSSwapBigToHostInt32(kernel_header->compressed_size));
         if (uncompressed_size != size) {
@@ -707,10 +707,10 @@ DecodeKernel(void *binary, entry_t *rentry, char **raddr, int *rsize)
             return -1;
         }
     }
-  
-  ThinFatFile(&binary, 0);
-  
-  ret = DecodeMachO(binary, rentry, raddr, rsize);
-  
-  return ret;
+
+    ThinFatFile(&binary, 0);
+
+    ret = DecodeMachO(binary, rentry, raddr, rsize);
+
+    return ret;
 }
