@@ -42,6 +42,8 @@ Node              *gMemoryMapNode;
 
 static char platformName[64];
 static uint64_t FSBFrequency = 266 * (1000 * 1000); // A semi-arbitrary number of megahertz.
+static uint32_t EarlyEntropyBuffer[64 / sizeof(uint32_t)];
+#define _countof(array) (sizeof(array)/sizeof(array[0]))
 
 void initKernBootStruct( int biosdev )
 {
@@ -96,6 +98,30 @@ void initKernBootStruct( int biosdev )
             stop("Couldn't create \"/efi/platform\" node, mach_kernel will not boot correctly");
         }
         
+        Node *chosen_node = DT__FindNode("/chosen", true);
+        if (chosen_node == 0) {
+            stop("Couldn't create \"/chosen\" node, mach_kernel will not boot correctly");
+        }
+
+        uint32_t cpuid_eax = 1, cpuid_ecx = 0;
+        __asm__ volatile("cpuid" : "=c" (cpuid_ecx) : "a" (cpuid_eax), "c" (cpuid_ecx));
+        if ((cpuid_ecx & (1 << 30)) == 0) {
+            stop("Cannot fill entropy buffer - hardware RNG not available");
+        }
+
+        for (int i = 0; i < _countof(EarlyEntropyBuffer); i++) {
+            // This code block was taken adapted from code on this page:
+            // http://stackoverflow.com/questions/21541968/is-flags-eflags-part-of-cc-condition-control-for-clobber-list/21552100#21552100
+            char cf = 0; uint32_t val = 0;
+            do {
+                __asm__ volatile("rdrand %0; setc %1" : "=r" (val), "=qm" (cf) :: "cc");
+            } while (cf == 0);
+            // End code block from Stack Overflow.
+
+            EarlyEntropyBuffer[i] = val;
+        }
+
+        DT__AddProperty(chosen_node, "random-seed", sizeof(EarlyEntropyBuffer), EarlyEntropyBuffer);
         DT__AddProperty(efi_node, "FSBFrequency", sizeof(FSBFrequency), &FSBFrequency);
         
         gMemoryMapNode = DT__FindNode("/chosen/memory-map", true);
