@@ -47,15 +47,6 @@
 #define O_ES    36
 #define O_FLG   38
 
-.data
-    .lcomm save_eax,  4,2
-    .lcomm save_edx,  4,2
-    .lcomm save_es,   2,1
-    .lcomm save_flag, 2,1
-    .lcomm new_eax,   4,2
-    .lcomm new_edx,   4,2
-    .lcomm new_es,    2,1
-
 .text
 
 /*============================================================================
@@ -130,3 +121,15 @@ do_int:
     leave
 
     ret
+
+.align 2, 0x90
+save_eax:  .long  0
+save_edx:  .long  0
+.align 1, 0x90
+save_es:   .short 0
+save_flag: .short 0
+.align 2, 0x90
+new_eax:   .long  0
+new_edx:   .long  0
+.align 1, 0x90
+new_es:    .short 0
