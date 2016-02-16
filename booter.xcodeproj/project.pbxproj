@@ -342,6 +342,7 @@
 		1F7F99011875C14C00752D3F /* Kernel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kernel.xcodeproj; path = ../Kernel/Kernel.xcodeproj; sourceTree = "<group>"; };
 		1F7F992B1875C5E000752D3F /* namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = namespace.h; sourceTree = "<group>"; };
 		1F85B4371C72B88500C544F7 /* random.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = random.c; sourceTree = "<group>"; };
+		1F85B43D1C72BAE800C544F7 /* random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = random.h; sourceTree = "<group>"; };
 		1FA47040187233F9008DA9B3 /* libsa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsa.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA4704418723455008DA9B3 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
 		1FA4704518723455008DA9B3 /* libsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libsa.h; sourceTree = "<group>"; };
@@ -529,6 +530,7 @@
 				1F7F98C11875C0D600752D3F /* pci.c */,
 				1F7F98C21875C0D600752D3F /* pci.h */,
 				1F85B4371C72B88500C544F7 /* random.c */,
+				1F85B43D1C72BAE800C544F7 /* random.h */,
 				1F7F98C31875C0D600752D3F /* saio_internal.h */,
 				1F7F98C41875C0D600752D3F /* saio_types.h */,
 				1F7F98C51875C0D600752D3F /* sl.h */,
