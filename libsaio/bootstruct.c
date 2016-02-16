@@ -28,6 +28,7 @@
 
 #include "libsaio.h"
 #include "bootstruct.h"
+#include "random.h"
 
 #define VGA_TEXT_MODE 0
 
@@ -105,20 +106,27 @@ void initKernBootStruct( int biosdev )
 
         uint32_t cpuid_eax = 1, cpuid_ecx = 0;
         __asm__ volatile("cpuid" : "=c" (cpuid_ecx) : "a" (cpuid_eax), "c" (cpuid_ecx));
-        if ((cpuid_ecx & (1 << 30)) == 0) {
-            stop("Cannot fill entropy buffer - hardware RNG not available");
-        }
 
-        for (int i = 0; i < _countof(EarlyEntropyBuffer); i++) {
-            // This code block was taken adapted from code on this page:
-            // http://stackoverflow.com/questions/21541968/is-flags-eflags-part-of-cc-condition-control-for-clobber-list/21552100#21552100
-            char cf = 0; uint32_t val = 0;
-            do {
-                __asm__ volatile("rdrand %0; setc %1" : "=r" (val), "=qm" (cf) :: "cc");
-            } while (cf == 0);
-            // End code block from Stack Overflow.
+        if ((cpuid_ecx & (1 << 30)) != 0) {
+            for (int i = 0; i < _countof(EarlyEntropyBuffer); i++) {
+                // This code block was taken adapted from code on this page:
+                // http://stackoverflow.com/questions/21541968/is-flags-eflags-part-of-cc-condition-control-for-clobber-list/21552100#21552100
+                char cf = 0; uint32_t val = 0;
+                do {
+                    __asm__ volatile("rdrand %0; setc %1" : "=r" (val), "=qm" (cf) :: "cc");
+                } while (cf == 0);
+                // End code block from Stack Overflow.
 
-            EarlyEntropyBuffer[i] = val;
+                EarlyEntropyBuffer[i] = val;
+            }
+        } else {
+            uint32_t tsc_hi, tsc_lo;
+            __asm__ volatile("rdtsc" : "=d" (tsc_hi), "=a" (tsc_lo));
+            srandom(tsc_hi ^ tsc_lo);
+
+            for (int i = 0; i < _countof(EarlyEntropyBuffer); i++) {
+                EarlyEntropyBuffer[i] = random();
+            }
         }
 
         DT__AddProperty(chosen_node, "random-seed", sizeof(EarlyEntropyBuffer), EarlyEntropyBuffer);
