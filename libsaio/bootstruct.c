@@ -217,4 +217,8 @@ finalizeBootStruct(void)
 	DT__FlattenDeviceTree((void **)&addr, &size);
 	bootArgs->deviceTreeP = (void *)addr;
 	bootArgs->deviceTreeLength = size;
+
+	// getMemoryMap() measures memory in KB; xnu expects it to be in bytes.
+	// Therefore, I must multiply by 1024 here.
+	bootArgs->PhysicalMemorySize = (bootInfo->convmem * 1024) + (bootInfo->extmem * 1024);
 }
