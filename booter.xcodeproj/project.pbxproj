@@ -64,6 +64,8 @@
 /* Begin PBXBuildFile section */
 		1F0000B1186B6FB30026B0FA /* machOconv.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F0000B0186B6FB30026B0FA /* machOconv.c */; };
 		1F057A7B187B4F3E00E1C8E5 /* startupfiletool.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F057A7A187B4F3E00E1C8E5 /* startupfiletool.c */; };
+		1F26F26D1C83C3F900BD4DCE /* divdi3.S in Sources */ = {isa = PBXBuildFile; fileRef = 1F26F26B1C83C3F500BD4DCE /* divdi3.S */; };
+		1F26F26E1C83C3F900BD4DCE /* moddi3.S in Sources */ = {isa = PBXBuildFile; fileRef = 1F26F26C1C83C3F500BD4DCE /* moddi3.S */; };
 		1F2D3C141874C9F10041D2CB /* rcz_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2D3C0A1874C9F10041D2CB /* rcz_common.h */; };
 		1F2D3C161874C9F10041D2CB /* rcz_compress_file.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2D3C0C1874C9F10041D2CB /* rcz_compress_file.h */; };
 		1F2D3C171874C9F10041D2CB /* rcz_compress_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D3C0D1874C9F10041D2CB /* rcz_compress_mem.c */; };
@@ -277,6 +279,8 @@
 		1F0000B0186B6FB30026B0FA /* machOconv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = machOconv.c; sourceTree = "<group>"; };
 		1F057A69187B4F2900E1C8E5 /* startupfiletool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = startupfiletool; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F057A7A187B4F3E00E1C8E5 /* startupfiletool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = startupfiletool.c; sourceTree = "<group>"; };
+		1F26F26B1C83C3F500BD4DCE /* divdi3.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = divdi3.S; sourceTree = "<group>"; };
+		1F26F26C1C83C3F500BD4DCE /* moddi3.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = moddi3.S; sourceTree = "<group>"; };
 		1F2D3C041874C9410041D2CB /* librcz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = librcz.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2D3C091874C9F10041D2CB /* rcz_common.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rcz_common.c; sourceTree = "<group>"; };
 		1F2D3C0A1874C9F10041D2CB /* rcz_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcz_common.h; sourceTree = "<group>"; };
@@ -429,6 +433,8 @@
 			isa = PBXGroup;
 			children = (
 				1FBEC611187608DE006DAC9F /* assembly.h */,
+				1F26F26B1C83C3F500BD4DCE /* divdi3.S */,
+				1F26F26C1C83C3F500BD4DCE /* moddi3.S */,
 				1FBEC612187608DE006DAC9F /* udivdi3.s */,
 				1FBEC613187608DE006DAC9F /* umoddi3.s */,
 				1F0000B0186B6FB30026B0FA /* machOconv.c */,
@@ -1148,11 +1154,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FDBEB381875FD3500D03F4F /* boot2.s in Sources */,
+				1F26F26E1C83C3F900BD4DCE /* moddi3.S in Sources */,
 				1FDBEB371875FD3500D03F4F /* boot.c in Sources */,
 				1FDBEB3A1875FD3500D03F4F /* graphics.c in Sources */,
 				1FDBEB391875FD3500D03F4F /* drivers.c in Sources */,
 				1FDBEB3D1875FD3500D03F4F /* prompt.c in Sources */,
 				1FDBEB3C1875FD3500D03F4F /* options.c in Sources */,
+				1F26F26D1C83C3F900BD4DCE /* divdi3.S in Sources */,
 				1FDBEB3B1875FD3500D03F4F /* lzss.c in Sources */,
 				1FBEC614187608DE006DAC9F /* udivdi3.s in Sources */,
 				1FBEC615187608DE006DAC9F /* umoddi3.s in Sources */,
