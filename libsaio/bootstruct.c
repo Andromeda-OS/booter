@@ -48,101 +48,101 @@ static uint32_t EarlyEntropyBuffer[64 / sizeof(uint32_t)];
 
 void initKernBootStruct( int biosdev )
 {
-    Node *node;
-    int nameLen;
-    static int init_done = 0;
-    
-    if ( !init_done )
-    {
-        bootArgs = (boot_args *)malloc(sizeof(boot_args));
-        bootInfo = (PrivateBootInfo_t *)malloc(sizeof(PrivateBootInfo_t));
-        if (bootArgs == 0 || bootInfo == 0)
-            stop("Couldn't allocate boot info\n");
-        
-        bzero(bootArgs, sizeof(boot_args));
-        bzero(bootInfo, sizeof(PrivateBootInfo_t));
-        
-        // Get system memory map. Also update the size of the
-        // conventional/extended memory for backwards compatibility.
-        
-        bootInfo->memoryMapCount =
-        getMemoryMap( bootInfo->memoryMap, kMemoryMapCountMax,
-                     (unsigned long *) &bootInfo->convmem,
-                     (unsigned long *) &bootInfo->extmem );
-        
-        if ( bootInfo->memoryMapCount == 0 )
-        {
-            // BIOS did not provide a memory map, systems with
-            // discontiguous memory or unusual memory hole locations
-            // may have problems.
-            
-            bootInfo->convmem = getConventionalMemorySize();
-            bootInfo->extmem  = getExtendedMemorySize();
-        }
-        
-        bootInfo->configEnd    = bootInfo->config;
-        bootArgs->Video.v_display = VGA_TEXT_MODE;
-        
-        DT__Initialize();
-        
-        node = DT__FindNode("/", true);
-        if (node == 0) {
-            stop("Couldn't create root node");
-        }
-        getPlatformName(platformName);
-        nameLen = strlen(platformName) + 1;
-        DT__AddProperty(node, "compatible", nameLen, platformName);
-        DT__AddProperty(node, "model", nameLen, platformName);
-        
-        Node *efi_node = DT__FindNode("/efi/platform", true);
-        if (efi_node == 0) {
-            stop("Couldn't create \"/efi/platform\" node, mach_kernel will not boot correctly");
-        }
-        
-        Node *chosen_node = DT__FindNode("/chosen", true);
-        if (chosen_node == 0) {
-            stop("Couldn't create \"/chosen\" node, mach_kernel will not boot correctly");
-        }
+	Node *node;
+	int nameLen;
+	static int init_done = 0;
 
-        uint32_t cpuid_eax = 1, cpuid_ecx = 0;
-        __asm__ volatile("cpuid" : "=c" (cpuid_ecx) : "a" (cpuid_eax), "c" (cpuid_ecx));
+	if ( !init_done )
+	{
+		bootArgs = (boot_args *)malloc(sizeof(boot_args));
+		bootInfo = (PrivateBootInfo_t *)malloc(sizeof(PrivateBootInfo_t));
+		if (bootArgs == 0 || bootInfo == 0)
+			stop("Couldn't allocate boot info\n");
 
-        if ((cpuid_ecx & (1 << 30)) != 0) {
-            for (int i = 0; i < _countof(EarlyEntropyBuffer); i++) {
-                // This code block was taken adapted from code on this page:
-                // http://stackoverflow.com/questions/21541968/is-flags-eflags-part-of-cc-condition-control-for-clobber-list/21552100#21552100
-                char cf = 0; uint32_t val = 0;
-                do {
-                    __asm__ volatile("rdrand %0; setc %1" : "=r" (val), "=qm" (cf) :: "cc");
-                } while (cf == 0);
-                // End code block from Stack Overflow.
+		bzero(bootArgs, sizeof(boot_args));
+		bzero(bootInfo, sizeof(PrivateBootInfo_t));
 
-                EarlyEntropyBuffer[i] = val;
-            }
-        } else {
-            uint32_t tsc_hi, tsc_lo;
-            __asm__ volatile("rdtsc" : "=d" (tsc_hi), "=a" (tsc_lo));
-            srandom(tsc_hi ^ tsc_lo);
+		// Get system memory map. Also update the size of the
+		// conventional/extended memory for backwards compatibility.
 
-            for (int i = 0; i < _countof(EarlyEntropyBuffer); i++) {
-                EarlyEntropyBuffer[i] = random();
-            }
-        }
+		bootInfo->memoryMapCount =
+		getMemoryMap( bootInfo->memoryMap, kMemoryMapCountMax,
+					 (unsigned long *) &bootInfo->convmem,
+					 (unsigned long *) &bootInfo->extmem );
 
-        DT__AddProperty(chosen_node, "random-seed", sizeof(EarlyEntropyBuffer), EarlyEntropyBuffer);
-        DT__AddProperty(efi_node, "FSBFrequency", sizeof(FSBFrequency), &FSBFrequency);
-        
-        gMemoryMapNode = DT__FindNode("/chosen/memory-map", true);
-        
-        bootArgs->Version  = kBootArgsVersion;
-        bootArgs->Revision = kBootArgsRevision;
-        
-        init_done = 1;
-    }
-    
-    // Update kernDev from biosdev.
-    
-    bootInfo->kernDev = biosdev;
+		if ( bootInfo->memoryMapCount == 0 )
+		{
+			// BIOS did not provide a memory map, systems with
+			// discontiguous memory or unusual memory hole locations
+			// may have problems.
+
+			bootInfo->convmem = getConventionalMemorySize();
+			bootInfo->extmem  = getExtendedMemorySize();
+		}
+
+		bootInfo->configEnd    = bootInfo->config;
+		bootArgs->Video.v_display = VGA_TEXT_MODE;
+
+		DT__Initialize();
+
+		node = DT__FindNode("/", true);
+		if (node == 0) {
+			stop("Couldn't create root node");
+		}
+		getPlatformName(platformName);
+		nameLen = strlen(platformName) + 1;
+		DT__AddProperty(node, "compatible", nameLen, platformName);
+		DT__AddProperty(node, "model", nameLen, platformName);
+
+		Node *efi_node = DT__FindNode("/efi/platform", true);
+		if (efi_node == 0) {
+			stop("Couldn't create \"/efi/platform\" node, mach_kernel will not boot correctly");
+		}
+
+		Node *chosen_node = DT__FindNode("/chosen", true);
+		if (chosen_node == 0) {
+			stop("Couldn't create \"/chosen\" node, mach_kernel will not boot correctly");
+		}
+
+		uint32_t cpuid_eax = 1, cpuid_ecx = 0;
+		__asm__ volatile("cpuid" : "=c" (cpuid_ecx) : "a" (cpuid_eax), "c" (cpuid_ecx));
+
+		if ((cpuid_ecx & (1 << 30)) != 0) {
+			for (int i = 0; i < _countof(EarlyEntropyBuffer); i++) {
+				// This code block was taken adapted from code on this page:
+				// http://stackoverflow.com/questions/21541968/is-flags-eflags-part-of-cc-condition-control-for-clobber-list/21552100#21552100
+				char cf = 0; uint32_t val = 0;
+				do {
+					__asm__ volatile("rdrand %0; setc %1" : "=r" (val), "=qm" (cf) :: "cc");
+				} while (cf == 0);
+				// End code block from Stack Overflow.
+
+				EarlyEntropyBuffer[i] = val;
+			}
+		} else {
+			uint32_t tsc_hi, tsc_lo;
+			__asm__ volatile("rdtsc" : "=d" (tsc_hi), "=a" (tsc_lo));
+			srandom(tsc_hi ^ tsc_lo);
+
+			for (int i = 0; i < _countof(EarlyEntropyBuffer); i++) {
+				EarlyEntropyBuffer[i] = random();
+			}
+		}
+
+		DT__AddProperty(chosen_node, "random-seed", sizeof(EarlyEntropyBuffer), EarlyEntropyBuffer);
+		DT__AddProperty(efi_node, "FSBFrequency", sizeof(FSBFrequency), &FSBFrequency);
+
+		gMemoryMapNode = DT__FindNode("/chosen/memory-map", true);
+
+		bootArgs->Version  = kBootArgsVersion;
+		bootArgs->Revision = kBootArgsRevision;
+
+		init_done = 1;
+	}
+
+	// Update kernDev from biosdev.
+
+	bootInfo->kernDev = biosdev;
 }
 
 
@@ -151,70 +151,70 @@ void initKernBootStruct( int biosdev )
 void
 reserveKernBootStruct(void)
 {
-    void *oldAddr = bootArgs;
-    bootArgs = (boot_args *)AllocateKernelMemory(sizeof(boot_args));
-    bcopy(oldAddr, bootArgs, sizeof(boot_args));
+	void *oldAddr = bootArgs;
+	bootArgs = (boot_args *)AllocateKernelMemory(sizeof(boot_args));
+	bcopy(oldAddr, bootArgs, sizeof(boot_args));
 }
 
 void
 finalizeBootStruct(void)
 {
-    uint32_t size;
-    void *addr;
-    int i;
-    EfiMemoryRange *memoryMap;
-    MemoryRange *range;
-    int memoryMapCount = bootInfo->memoryMapCount;
-    
-    if (memoryMapCount == 0) {
-        // XXX could make a two-part map here
-        stop("Unable to convert memory map into proper format\n");
-    }
-    
-    // convert memory map to boot_args memory map
-    memoryMap = (EfiMemoryRange *)AllocateKernelMemory(sizeof(EfiMemoryRange) * memoryMapCount);
-    bootArgs->MemoryMap = memoryMap;
-    bootArgs->MemoryMapSize = sizeof(EfiMemoryRange) * memoryMapCount;
-    bootArgs->MemoryMapDescriptorSize = sizeof(EfiMemoryRange);
-    bootArgs->MemoryMapDescriptorVersion = 0;
-    
-    for (i=0; i<memoryMapCount; i++, memoryMap++) {
-        range = &bootInfo->memoryMap[i];
-        switch(range->type) {
-            case kMemoryRangeACPI:
-                memoryMap->Type = kEfiACPIReclaimMemory;
-                break;
-            case kMemoryRangeNVS:
-                memoryMap->Type = kEfiACPIMemoryNVS;
-                break;
-            case kMemoryRangeUsable:
-                memoryMap->Type = kEfiConventionalMemory;
-                break;
-            case kMemoryRangeReserved:
-            default:
-                memoryMap->Type = kEfiReservedMemoryType;
-                break;
-        }
-        memoryMap->PhysicalStart = range->base;
-        memoryMap->VirtualStart = range->base;
-        memoryMap->NumberOfPages = range->length >> I386_PGSHIFT;
-        memoryMap->Attribute = 0;
-    }
-    
-    // copy bootFile into device tree
-    // XXX
-    
-    // add PCI info somehow into device tree
-    // XXX
-    
-    // Flatten device tree
-    DT__FlattenDeviceTree(0, &size);
-    addr = (void *)AllocateKernelMemory(size);
-    if (addr == 0) {
-        stop("Couldn't allocate device tree\n");
-    }
-    
-    DT__FlattenDeviceTree((void **)&addr, &size);
-    bootArgs->deviceTreeP = (void *)addr;
-    bootArgs->deviceTreeLength = size;
+	uint32_t size;
+	void *addr;
+	int i;
+	EfiMemoryRange *memoryMap;
+	MemoryRange *range;
+	int memoryMapCount = bootInfo->memoryMapCount;
+
+	if (memoryMapCount == 0) {
+		// XXX could make a two-part map here
+		stop("Unable to convert memory map into proper format\n");
+	}
+
+	// convert memory map to boot_args memory map
+	memoryMap = (EfiMemoryRange *)AllocateKernelMemory(sizeof(EfiMemoryRange) * memoryMapCount);
+	bootArgs->MemoryMap = memoryMap;
+	bootArgs->MemoryMapSize = sizeof(EfiMemoryRange) * memoryMapCount;
+	bootArgs->MemoryMapDescriptorSize = sizeof(EfiMemoryRange);
+	bootArgs->MemoryMapDescriptorVersion = 0;
+
+	for (i=0; i<memoryMapCount; i++, memoryMap++) {
+		range = &bootInfo->memoryMap[i];
+		switch(range->type) {
+			case kMemoryRangeACPI:
+				memoryMap->Type = kEfiACPIReclaimMemory;
+				break;
+			case kMemoryRangeNVS:
+				memoryMap->Type = kEfiACPIMemoryNVS;
+				break;
+			case kMemoryRangeUsable:
+				memoryMap->Type = kEfiConventionalMemory;
+				break;
+			case kMemoryRangeReserved:
+			default:
+				memoryMap->Type = kEfiReservedMemoryType;
+				break;
+		}
+		memoryMap->PhysicalStart = range->base;
+		memoryMap->VirtualStart = range->base;
+		memoryMap->NumberOfPages = range->length >> I386_PGSHIFT;
+		memoryMap->Attribute = 0;
+	}
+
+	// copy bootFile into device tree
+	// XXX
+
+	// add PCI info somehow into device tree
+	// XXX
+
+	// Flatten device tree
+	DT__FlattenDeviceTree(0, &size);
+	addr = (void *)AllocateKernelMemory(size);
+	if (addr == 0) {
+		stop("Couldn't allocate device tree\n");
+	}
+
+	DT__FlattenDeviceTree((void **)&addr, &size);
+	bootArgs->deviceTreeP = (void *)addr;
+	bootArgs->deviceTreeLength = size;
 }
