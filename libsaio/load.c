@@ -28,7 +28,6 @@
 
 #include <mach-o/fat.h>
 #include <mach-o/loader.h>
-#undef __DARWIN_UNIX03
 #include <mach/machine/thread_status.h>
 
 #include <sl.h>
@@ -289,14 +288,14 @@ static long DecodeUnixThread(long cmdBase, unsigned int *entry, int use_64bit_lo
 {
     if (use_64bit_load_command) {
         x86_thread_state64_t *threadState = (x86_thread_state64_t *)(cmdBase + sizeof(struct thread_command) + 8);
-        *entry = (threadState->rip & 0x3fffffff);
+        *entry = (threadState->__rip & 0x3fffffff);
     } else {
         i386_thread_state_t *i386ThreadState;
         
         i386ThreadState = (i386_thread_state_t *)
         (cmdBase + sizeof(struct thread_command) + 8);
         
-        *entry = (i386ThreadState->eip & 0x3fffffff);
+        *entry = (i386ThreadState->__eip & 0x3fffffff);
     }
     
 #if DEBUG
