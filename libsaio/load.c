@@ -28,6 +28,7 @@
 
 #include <mach-o/fat.h>
 #include <mach-o/loader.h>
+#undef __DARWIN_UNIX03
 #include <mach/machine/thread_status.h>
 
 #include <sl.h>
