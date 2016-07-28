@@ -1,0 +1,10 @@
+//
+//  cross-build-debug.xcconfig
+//  PlatformKEXTs
+//
+//  Created by William Kent on 8/23/15.
+//  Copyright © 2015 William Kent. All rights reserved.
+//
+
+XNU_INSTALL_ROOT = "$(PROJECT_TEMP_ROOT)/xnu"
+#include "cross-build-common.xcconfig"
