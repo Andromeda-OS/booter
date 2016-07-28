@@ -213,7 +213,7 @@ enum {
 
 #define MAKEKERNDEV(t, u, p)  MAKEBOOTDEV(t, 0, 0, u, p)
 
-enum {
+typedef enum {
     kNetworkDeviceType = kBIOSDevTypeNetwork,
     kBlockDeviceType   = kBIOSDevTypeHardDrive
 } gBootFileType_t;
