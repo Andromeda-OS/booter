@@ -25,7 +25,7 @@
 #ifndef __LIBSAIO_NBP_CMD_H
 #define __LIBSAIO_NBP_CMD_H
 
-#include <IOKit/IOTypes.h>
+#include <stdint.h>
 
 /*==========================================================================
  * NBP return status codes.
@@ -49,28 +49,28 @@ typedef enum {
  * NBP commands.
  */
 typedef struct {
-    UInt32    status;         /* return code from NBP */
+    uint32_t    status;         /* return code from NBP */
 } nbpCommandHeader_s;
 
 typedef struct {
-    UInt32   status;         /* return code from NBP */
-    UInt8    filename[128];  /* name of file to be downloaded */
-    UInt32   bufferSize;     /* size of the download buffer */
-    UInt32   buffer;         /* physical address of the download buffer */
+    uint32_t   status;         /* return code from NBP */
+    uint8_t    filename[128];  /* name of file to be downloaded */
+    uint32_t   bufferSize;     /* size of the download buffer */
+    uint32_t   buffer;         /* physical address of the download buffer */
 } nbpCommandTFTPReadFile_s;
 
 typedef struct {
-    UInt32   status;         /* return code from NBP */
-    UInt8    filename[128];  /* name of file to be downloaded */
-    UInt32   filesize;       /* size of the file specified */
+    uint32_t   status;         /* return code from NBP */
+    uint8_t    filename[128];  /* name of file to be downloaded */
+    uint32_t   filesize;       /* size of the file specified */
 } nbpCommandTFTPGetFileSize_s;
 
 typedef struct {
-    UInt32   status;         /* return code from NBP */
-    UInt8    sname[64];      /* server name */
-    UInt32   CIP;            /* client IP address */
-    UInt32   SIP;            /* server IP address */
-    UInt32   GIP;            /* gateway IP address */
+    uint32_t   status;         /* return code from NBP */
+    uint8_t    sname[64];      /* server name */
+    uint32_t   CIP;            /* client IP address */
+    uint32_t   SIP;            /* server IP address */
+    uint32_t   GIP;            /* gateway IP address */
 } nbpCommandGetNetworkInfo_s;
 
 /*==========================================================================

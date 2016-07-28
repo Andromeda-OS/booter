@@ -36,9 +36,9 @@
  * ensure that it resides within the addressable range for the
  * network loader, which runs in real mode.
  */
-static UInt32 nbp(nbpCommandCode_t code, nbpCommand_u * cmd)
+static uint32_t nbp(nbpCommandCode_t code, nbpCommand_u * cmd)
 {
-	loader(code, GET_FP((UInt32) cmd));
+	loader(code, GET_FP((uint32_t) cmd));
 
 	// Must re-enable the A20 address line, the PXE firmware will
 	// disable the A20 line control.
@@ -51,7 +51,7 @@ static UInt32 nbp(nbpCommandCode_t code, nbpCommand_u * cmd)
 /*==========================================================================
  * Unload Base Code Stack command.
  */
-UInt32 nbpUnloadBaseCode()
+uint32_t nbpUnloadBaseCode()
 {
     return nbp(nbpCommandUnloadBaseCode, (nbpCommand_u *) 0);
 }
@@ -62,7 +62,7 @@ UInt32 nbpUnloadBaseCode()
 static long NBPLoadFile(CICell ih, char * filePath)
 {
     nbpCommandTFTPReadFile_s  cmd;
-	UInt32                    ret;
+	uint32_t                    ret;
 
 	strcpy((char *)cmd.filename, filePath);
 	cmd.status     = nbpStatusFailed;
