@@ -32,7 +32,7 @@ extern void   real_to_prot(void);
 extern void   prot_to_real(void);
 extern void   halt(void);
 extern void   startprog(unsigned int address, void *arg);
-extern void   loader(UInt32 code, UInt32 cmdptr);
+extern void   loader(uint32_t code, uint32_t cmdptr);
 
 /* bios.s */
 extern void   bios(biosBuf_t *bb);
@@ -124,7 +124,7 @@ extern int    checkForSupportedHardware();
 extern void   getPlatformName(char *nameBuf);
 
 /* nbp.c */
-extern UInt32 nbpUnloadBaseCode();
+extern uint32_t nbpUnloadBaseCode();
 extern BVRef  nbpScanBootVolumes(int biosdev, int *count);
 
 /* stringTable.c */

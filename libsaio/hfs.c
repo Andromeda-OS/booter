@@ -323,8 +323,8 @@ void
 HFSGetDescription(CICell ih, char *str, long strMaxLen)
 {
 
-    UInt16 nodeSize;
-    UInt32 firstLeafNode;
+    uint16_t nodeSize;
+    uint32_t firstLeafNode;
     long dirIndex;
     char *name;
     long flags, time;
