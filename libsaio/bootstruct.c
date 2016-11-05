@@ -40,6 +40,7 @@
 boot_args         *bootArgs;
 PrivateBootInfo_t *bootInfo;
 Node              *gMemoryMapNode;
+Node              *gChosenNode;
 
 static char platformName[64];
 static uint64_t FSBFrequency = 266 * (1000 * 1000); // A semi-arbitrary number of megahertz.
@@ -99,8 +100,8 @@ void initKernBootStruct( int biosdev )
 			stop("Couldn't create \"/efi/platform\" node, mach_kernel will not boot correctly");
 		}
 
-		Node *chosen_node = DT__FindNode("/chosen", true);
-		if (chosen_node == 0) {
+		gChosenNode = DT__FindNode("/chosen", true);
+		if (gChosenNode == 0) {
 			stop("Couldn't create \"/chosen\" node, mach_kernel will not boot correctly");
 		}
 
@@ -129,7 +130,7 @@ void initKernBootStruct( int biosdev )
 			}
 		}
 
-		DT__AddProperty(chosen_node, "random-seed", sizeof(EarlyEntropyBuffer), EarlyEntropyBuffer);
+		DT__AddProperty(gChosenNode, "random-seed", sizeof(EarlyEntropyBuffer), EarlyEntropyBuffer);
 		DT__AddProperty(efi_node, "FSBFrequency", sizeof(FSBFrequency), &FSBFrequency);
 
 		gMemoryMapNode = DT__FindNode("/chosen/memory-map", true);
