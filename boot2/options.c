@@ -723,6 +723,8 @@ processBootArgument(
 // Maximum config table value size
 #define VALUE_SIZE 1024
 
+static char uuidStr[64];
+
 int
 processBootOptions()
 {
@@ -733,7 +735,6 @@ processBootOptions()
 	int		     userCnt;
 	int              cntRemaining;
 	char *           argP;
-	char             uuidStr[64];
 	BOOL             uuidSet = NO;
 	char *           configKernelFlags;
 	char *           valueBuffer;
@@ -822,6 +823,9 @@ processBootOptions()
 			verbose("Setting boot-uuid to: %s\n", uuidStr);
 			copyArgument(kBootUUIDKey, uuidStr, strlen(uuidStr), &argP, &cntRemaining);
 			uuidSet = YES;
+
+			extern Node *gChosenNode;
+			DT__AddProperty(gChosenNode, "boot-uuid", sizeof(uuidStr), uuidStr);
 		}
 	}
 
