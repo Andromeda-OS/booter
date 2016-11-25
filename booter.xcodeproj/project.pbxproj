@@ -122,7 +122,7 @@
 		1F7F992C1875C5E000752D3F /* namespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F992B1875C5E000752D3F /* namespace.h */; };
 		1F85B4381C72B88500C544F7 /* random.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F85B4371C72B88500C544F7 /* random.c */; };
 		1FA4704E18723455008DA9B3 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704418723455008DA9B3 /* error.c */; };
-		1FA4704F18723455008DA9B3 /* libsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4704518723455008DA9B3 /* libsa.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FA4704F18723455008DA9B3 /* libsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4704518723455008DA9B3 /* libsa.h */; };
 		1FA4705018723455008DA9B3 /* memory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4704618723455008DA9B3 /* memory.h */; };
 		1FA4705118723455008DA9B3 /* prf.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704718723455008DA9B3 /* prf.c */; };
 		1FA4705218723455008DA9B3 /* printf.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704818723455008DA9B3 /* printf.c */; };
@@ -361,6 +361,7 @@
 		1FA4704B18723455008DA9B3 /* string.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = string.c; sourceTree = "<group>"; };
 		1FA4704C18723455008DA9B3 /* strtol.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strtol.c; sourceTree = "<group>"; };
 		1FA4704D18723455008DA9B3 /* zalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zalloc.c; sourceTree = "<group>"; };
+		1FAF1BFC1DE7E84700E1B349 /* copy-libsa-headers.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "copy-libsa-headers.sh"; sourceTree = "<group>"; };
 		1FBEC611187608DE006DAC9F /* assembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = assembly.h; sourceTree = "<group>"; };
 		1FBEC612187608DE006DAC9F /* udivdi3.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = udivdi3.s; sourceTree = "<group>"; };
 		1FBEC613187608DE006DAC9F /* umoddi3.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = umoddi3.s; sourceTree = "<group>"; };
@@ -452,6 +453,7 @@
 				1F15C9DE1D49B06E0003363C /* cross-build-common.xcconfig */,
 				1F15C9DF1D49B06E0003363C /* cross-build-debug.xcconfig */,
 				1F15C9E01D49B06E0003363C /* cross-build-release.xcconfig */,
+				1FAF1BFC1DE7E84700E1B349 /* copy-libsa-headers.sh */,
 			);
 			name = "Xcode Supporting Files";
 			path = xcodesupport;
@@ -711,8 +713,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA4704F18723455008DA9B3 /* libsa.h in Headers */,
 				1FA4705018723455008DA9B3 /* memory.h in Headers */,
+				1FA4704F18723455008DA9B3 /* libsa.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +795,7 @@
 				1FA4703C187233F9008DA9B3 /* Sources */,
 				1FA4703D187233F9008DA9B3 /* Frameworks */,
 				1FA4703E187233F9008DA9B3 /* Headers */,
+				1FAF1BFD1DE7E88400E1B349 /* Install Headers */,
 			);
 			buildRules = (
 			);
@@ -1052,6 +1055,21 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "cp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
+			showEnvVarsInLog = 0;
+		};
+		1FAF1BFD1DE7E88400E1B349 /* Install Headers */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Install Headers";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ". \"${SRCROOT}/xcodesupport/copy-libsa-headers.sh\"";
 			showEnvVarsInLog = 0;
 		};
 		1FBEC61618760A5C006DAC9F /* Convert Booter File */ = {
@@ -1702,6 +1720,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				XNU_INSTALL_ROOT = "$(PROJECT_TEMP_ROOT)/xnu";
 			};
 			name = Debug;
 		};
@@ -1752,6 +1771,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = /System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/standalone;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				XNU_INSTALL_ROOT = "$(DSTROOT)";
 			};
 			name = Release;
 		};
