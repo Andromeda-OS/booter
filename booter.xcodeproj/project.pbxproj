@@ -247,6 +247,13 @@
 			remoteGlobalIDString = 1F7F989E1875C07F00752D3F;
 			remoteInfo = libsaio;
 		};
+		1FE4C7D51E58F198009DA903 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F42B3DD18592FE90023356E;
+			remoteInfo = mach_kernel;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -800,6 +807,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1FE4C7D61E58F198009DA903 /* PBXTargetDependency */,
 			);
 			name = libsa;
 			productName = libsa;
@@ -1252,6 +1260,11 @@
 			isa = PBXTargetDependency;
 			target = 1F7F989E1875C07F00752D3F /* libsaio */;
 			targetProxy = 1FDBEB431875FD5800D03F4F /* PBXContainerItemProxy */;
+		};
+		1FE4C7D61E58F198009DA903 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = mach_kernel;
+			targetProxy = 1FE4C7D51E58F198009DA903 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
