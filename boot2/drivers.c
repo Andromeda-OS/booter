@@ -641,7 +641,10 @@ ParseXML( char * buffer, ModulePtr * module, TagPtr * personalities )
 	required = XMLGetProperty(moduleDict, kPropOSBundleRequired);
 	if ( (required == 0) ||
 		(required->type != kTagTypeString) ||
-		!strcmp(required->string, "Safe Boot"))
+		!strcmp(required->string, "Safe Boot") ||
+		!strcmp(required->string, "Root") ||
+		!strcmp(required->string, "Local-Root") ||
+		!strcmp(required->string, "Console"))
 	{
 		XMLFreeTag(moduleDict);
 		return -2;
