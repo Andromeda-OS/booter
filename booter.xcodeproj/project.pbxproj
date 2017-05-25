@@ -184,13 +184,6 @@
 			remoteGlobalIDString = 1FDBEB211875FD2500D03F4F;
 			remoteInfo = boot2;
 		};
-		1FAA068C1995A7B900D871C6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F057A68187B4F2900E1C8E5;
-			remoteInfo = startupfiletool;
-		};
 		1FDBEB3F1875FD5800D03F4F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
@@ -747,7 +740,6 @@
 			dependencies = (
 				1F057A87187B50C700E1C8E5 /* PBXTargetDependency */,
 				1F057A89187B50C700E1C8E5 /* PBXTargetDependency */,
-				1FAA068D1995A7B900D871C6 /* PBXTargetDependency */,
 				1FDBEB401875FD5800D03F4F /* PBXTargetDependency */,
 				1FDBEB421875FD5800D03F4F /* PBXTargetDependency */,
 				1FDBEB441875FD5800D03F4F /* PBXTargetDependency */,
@@ -1100,11 +1092,6 @@
 			isa = PBXTargetDependency;
 			target = 1FDBEB211875FD2500D03F4F /* boot2 */;
 			targetProxy = 1F3ED95F18762BDF0066EF9F /* PBXContainerItemProxy */;
-		};
-		1FAA068D1995A7B900D871C6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1F057A68187B4F2900E1C8E5 /* startupfiletool */;
-			targetProxy = 1FAA068C1995A7B900D871C6 /* PBXContainerItemProxy */;
 		};
 		1FDBEB401875FD5800D03F4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
