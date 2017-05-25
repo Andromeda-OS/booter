@@ -184,41 +184,6 @@
 			remoteGlobalIDString = 1FDBEB211875FD2500D03F4F;
 			remoteInfo = boot2;
 		};
-		1F7F990D1875C14C00752D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F051CD01859223C008F6CAE;
-			remoteInfo = dwarf;
-		};
-		1F7F990F1875C14C00752D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1FAD56711859255500EDAF39;
-			remoteInfo = elf;
-		};
-		1F7F99111875C14C00752D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F3A87491859298E007D12D6;
-			remoteInfo = ctfconvert;
-		};
-		1F7F99131875C14C00752D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F37E27E18592E42001B9501;
-			remoteInfo = ctfmerge;
-		};
-		1F7F991D1875C16900752D3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F42B3DD18592FE90023356E;
-			remoteInfo = mach_kernel;
-		};
 		1FAA068C1995A7B900D871C6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
@@ -246,13 +211,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1F7F989E1875C07F00752D3F;
 			remoteInfo = libsaio;
-		};
-		1FE4C7D51E58F198009DA903 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F42B3DD18592FE90023356E;
-			remoteInfo = mach_kernel;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -286,9 +244,6 @@
 		1F0000B0186B6FB30026B0FA /* machOconv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = machOconv.c; sourceTree = "<group>"; };
 		1F057A69187B4F2900E1C8E5 /* startupfiletool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = startupfiletool; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F057A7A187B4F3E00E1C8E5 /* startupfiletool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = startupfiletool.c; sourceTree = "<group>"; };
-		1F15C9DE1D49B06E0003363C /* cross-build-common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "cross-build-common.xcconfig"; sourceTree = "<group>"; };
-		1F15C9DF1D49B06E0003363C /* cross-build-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "cross-build-debug.xcconfig"; sourceTree = "<group>"; };
-		1F15C9E01D49B06E0003363C /* cross-build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "cross-build-release.xcconfig"; sourceTree = "<group>"; };
 		1F26F26B1C83C3F500BD4DCE /* divdi3.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = divdi3.S; sourceTree = "<group>"; };
 		1F26F26C1C83C3F500BD4DCE /* moddi3.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = moddi3.S; sourceTree = "<group>"; };
 		1F2D3C041874C9410041D2CB /* librcz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = librcz.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -353,7 +308,6 @@
 		1F7F98CF1875C0D600752D3F /* vbe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vbe.h; sourceTree = "<group>"; };
 		1F7F98D01875C0D600752D3F /* xml.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xml.c; sourceTree = "<group>"; };
 		1F7F98D11875C0D600752D3F /* xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xml.h; sourceTree = "<group>"; };
-		1F7F99011875C14C00752D3F /* Kernel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kernel.xcodeproj; path = ../Kernel/Kernel.xcodeproj; sourceTree = "<group>"; };
 		1F7F992B1875C5E000752D3F /* namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = namespace.h; sourceTree = "<group>"; };
 		1F85B4371C72B88500C544F7 /* random.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = random.c; sourceTree = "<group>"; };
 		1F85B43D1C72BAE800C544F7 /* random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = random.h; sourceTree = "<group>"; };
@@ -368,7 +322,6 @@
 		1FA4704B18723455008DA9B3 /* string.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = string.c; sourceTree = "<group>"; };
 		1FA4704C18723455008DA9B3 /* strtol.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strtol.c; sourceTree = "<group>"; };
 		1FA4704D18723455008DA9B3 /* zalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zalloc.c; sourceTree = "<group>"; };
-		1FAF1BFC1DE7E84700E1B349 /* copy-libsa-headers.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "copy-libsa-headers.sh"; sourceTree = "<group>"; };
 		1FBEC611187608DE006DAC9F /* assembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = assembly.h; sourceTree = "<group>"; };
 		1FBEC612187608DE006DAC9F /* udivdi3.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = udivdi3.s; sourceTree = "<group>"; };
 		1FBEC613187608DE006DAC9F /* umoddi3.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = umoddi3.s; sourceTree = "<group>"; };
@@ -452,18 +405,6 @@
 				1F057A7A187B4F3E00E1C8E5 /* startupfiletool.c */,
 			);
 			path = util;
-			sourceTree = "<group>";
-		};
-		1F15C9DD1D49B06E0003363C /* Xcode Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1F15C9DE1D49B06E0003363C /* cross-build-common.xcconfig */,
-				1F15C9DF1D49B06E0003363C /* cross-build-debug.xcconfig */,
-				1F15C9E01D49B06E0003363C /* cross-build-release.xcconfig */,
-				1FAF1BFC1DE7E84700E1B349 /* copy-libsa-headers.sh */,
-			);
-			name = "Xcode Supporting Files";
-			path = xcodesupport;
 			sourceTree = "<group>";
 		};
 		1F2D3C081874C9450041D2CB /* rcz */ = {
@@ -587,25 +528,6 @@
 			path = legacy;
 			sourceTree = "<group>";
 		};
-		1F7F99001875C13D00752D3F /* References */ = {
-			isa = PBXGroup;
-			children = (
-				1F7F99011875C14C00752D3F /* Kernel.xcodeproj */,
-			);
-			name = References;
-			sourceTree = "<group>";
-		};
-		1F7F99021875C14C00752D3F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1F7F990E1875C14C00752D3F /* libdwarf.a */,
-				1F7F99101875C14C00752D3F /* libelf.a */,
-				1F7F99121875C14C00752D3F /* ctfconvert */,
-				1F7F99141875C14C00752D3F /* ctfmerge */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		1FA4703B18723399008DA9B3 /* libsa */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,8 +586,6 @@
 				1F7F989A1875BFCC00752D3F /* libsaio */,
 				1F2D3C081874C9450041D2CB /* rcz */,
 				1F0000A8186B6F5A0026B0FA /* util */,
-				1F15C9DD1D49B06E0003363C /* Xcode Supporting Files */,
-				1F7F99001875C13D00752D3F /* References */,
 				1F4465A11869F399008660CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -788,7 +708,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				1F7F991E1875C16900752D3F /* PBXTargetDependency */,
 			);
 			name = libsaio;
 			productName = saio;
@@ -807,7 +726,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				1FE4C7D61E58F198009DA903 /* PBXTargetDependency */,
 			);
 			name = libsa;
 			productName = libsa;
@@ -858,12 +776,6 @@
 			mainGroup = 1FE6F353186920A8003ED90F;
 			productRefGroup = 1F4465A11869F399008660CA /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1F7F99021875C14C00752D3F /* Products */;
-					ProjectRef = 1F7F99011875C14C00752D3F /* Kernel.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1F4465971869F2F2008660CA /* boot0 */,
@@ -879,37 +791,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		1F7F990E1875C14C00752D3F /* libdwarf.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libdwarf.a;
-			remoteRef = 1F7F990D1875C14C00752D3F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F7F99101875C14C00752D3F /* libelf.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libelf.a;
-			remoteRef = 1F7F990F1875C14C00752D3F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F7F99121875C14C00752D3F /* ctfconvert */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = ctfconvert;
-			remoteRef = 1F7F99111875C14C00752D3F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F7F99141875C14C00752D3F /* ctfmerge */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = ctfmerge;
-			remoteRef = 1F7F99131875C14C00752D3F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		1F3029C2186A365B009F0246 /* Compile boot1h */ = {
@@ -1236,11 +1117,6 @@
 			target = 1FDBEB211875FD2500D03F4F /* boot2 */;
 			targetProxy = 1F3ED95F18762BDF0066EF9F /* PBXContainerItemProxy */;
 		};
-		1F7F991E1875C16900752D3F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = mach_kernel;
-			targetProxy = 1F7F991D1875C16900752D3F /* PBXContainerItemProxy */;
-		};
 		1FAA068D1995A7B900D871C6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1F057A68187B4F2900E1C8E5 /* startupfiletool */;
@@ -1260,11 +1136,6 @@
 			isa = PBXTargetDependency;
 			target = 1F7F989E1875C07F00752D3F /* libsaio */;
 			targetProxy = 1FDBEB431875FD5800D03F4F /* PBXContainerItemProxy */;
-		};
-		1FE4C7D61E58F198009DA903 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = mach_kernel;
-			targetProxy = 1FE4C7D51E58F198009DA903 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1411,7 +1282,6 @@
 		};
 		1F2D3C051874C9410041D2CB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F15C9DF1D49B06E0003363C /* cross-build-debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -1458,7 +1328,6 @@
 		};
 		1F2D3C061874C9410041D2CB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F15C9E01D49B06E0003363C /* cross-build-release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -1555,7 +1424,6 @@
 		};
 		1F7F98A11875C07F00752D3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F15C9DF1D49B06E0003363C /* cross-build-debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -1621,7 +1489,6 @@
 		};
 		1F7F98A21875C07F00752D3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F15C9E01D49B06E0003363C /* cross-build-release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -1686,7 +1553,6 @@
 		};
 		1FA47042187233F9008DA9B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F15C9DF1D49B06E0003363C /* cross-build-debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -1737,7 +1603,6 @@
 		};
 		1FA47043187233F9008DA9B3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F15C9E01D49B06E0003363C /* cross-build-release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -1788,7 +1653,6 @@
 		};
 		1FDBEB291875FD2500D03F4F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F15C9DF1D49B06E0003363C /* cross-build-debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -1856,7 +1720,6 @@
 		};
 		1FDBEB2A1875FD2500D03F4F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F15C9E01D49B06E0003363C /* cross-build-release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
