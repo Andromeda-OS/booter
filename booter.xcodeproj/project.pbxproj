@@ -19,22 +19,6 @@
 			name = boot1h;
 			productName = boot1h;
 		};
-		1F3ED95318762BD40066EF9F /* cdboot */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 1F3ED95E18762BD40066EF9F /* Build configuration list for PBXAggregateTarget "cdboot" */;
-			buildPhases = (
-				1F3ED96218762C040066EF9F /* Assemble First Stage */,
-				1F3ED96318762C2D0066EF9F /* Combine Booter Components */,
-				1F3ED96518762D820066EF9F /* Install Booter */,
-			);
-			dependencies = (
-				1F26D269187739FD0069D655 /* PBXTargetDependency */,
-				1F26D25F187739FA0069D655 /* PBXTargetDependency */,
-				1F3ED96018762BDF0066EF9F /* PBXTargetDependency */,
-			);
-			name = cdboot;
-			productName = cdboot;
-		};
 		1F4465971869F2F2008660CA /* boot0 */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 1F4465981869F2F2008660CA /* Build configuration list for PBXAggregateTarget "boot0" */;
@@ -163,27 +147,6 @@
 			remoteGlobalIDString = 1F3029BE186A364A009F0246;
 			remoteInfo = boot1h;
 		};
-		1F26D25E187739FA0069D655 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F3029BE186A364A009F0246;
-			remoteInfo = boot1h;
-		};
-		1F26D268187739FD0069D655 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F4465971869F2F2008660CA;
-			remoteInfo = boot0;
-		};
-		1F3ED95F18762BDF0066EF9F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1FDBEB211875FD2500D03F4F;
-			remoteInfo = boot2;
-		};
 		1FDBEB3F1875FD5800D03F4F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1FE6F354186920A8003ED90F /* Project object */;
@@ -250,6 +213,7 @@
 		1F2D3C101874C9F10041D2CB /* rcz_decompress_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcz_decompress_file.h; sourceTree = "<group>"; };
 		1F2D3C111874C9F10041D2CB /* rcz_decompress_mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rcz_decompress_mem.c; sourceTree = "<group>"; };
 		1F2D3C121874C9F10041D2CB /* rcz_decompress_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcz_decompress_mem.h; sourceTree = "<group>"; };
+		1F2DABAB1F50E8AF000A9DCC /* install-cdboot.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "install-cdboot.sh"; sourceTree = "<group>"; };
 		1F3029C3186A3691009F0246 /* boot1.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = boot1.s; sourceTree = "<group>"; };
 		1F3ED96418762CE40066EF9F /* cdboot.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = cdboot.s; sourceTree = "<group>"; };
 		1F4465951869F2A1008660CA /* boot0.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = boot0.s; sourceTree = "<group>"; };
@@ -417,6 +381,14 @@
 			path = rcz;
 			sourceTree = "<group>";
 		};
+		1F2DABAA1F50E899000A9DCC /* xcodescripts */ = {
+			isa = PBXGroup;
+			children = (
+				1F2DABAB1F50E8AF000A9DCC /* install-cdboot.sh */,
+			);
+			path = xcodescripts;
+			sourceTree = "<group>";
+		};
 		1F3029BD186A3626009F0246 /* boot1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,6 +551,7 @@
 				1F7F989A1875BFCC00752D3F /* libsaio */,
 				1F2D3C081874C9450041D2CB /* rcz */,
 				1F0000A8186B6F5A0026B0FA /* util */,
+				1F2DABAA1F50E899000A9DCC /* xcodescripts */,
 				1F4465A11869F399008660CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -734,6 +707,7 @@
 				1FBEC61818760B04006DAC9F /* Install Booter */,
 				1FBEC61D18760C28006DAC9F /* Install Boot Property List */,
 				1FBEC61F18760C3C006DAC9F /* Install Manual Pages */,
+				1F2DABA91F50E885000A9DCC /* Compile CD-ROM Boot Loader */,
 			);
 			buildRules = (
 			);
@@ -773,7 +747,6 @@
 				1F4465971869F2F2008660CA /* boot0 */,
 				1F7F34451869F52500633013 /* chain0 */,
 				1F3029BE186A364A009F0246 /* boot1h */,
-				1F3ED95318762BD40066EF9F /* cdboot */,
 				1F0000A6186B6F5A0026B0FA /* machOconv */,
 				1FA4703F187233F9008DA9B3 /* libsa */,
 				1F7F989E1875C07F00752D3F /* libsaio */,
@@ -784,6 +757,24 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1F2DABA91F50E885000A9DCC /* Compile CD-ROM Boot Loader */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/cdboot/cdboot.s",
+				"$(BUILT_PRODUCTS_DIR)/boot",
+			);
+			name = "Compile CD-ROM Boot Loader";
+			outputPaths = (
+				"$(DSTROOT)/usr/local/standalone/i386/cdboot",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = ". \"${SRCROOT}/xcodescripts/install-cdboot.sh\"";
+			showEnvVarsInLog = 0;
+		};
 		1F3029C2186A365B009F0246 /* Compile boot1h */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -816,57 +807,6 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "cp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
-			showEnvVarsInLog = 0;
-		};
-		1F3ED96218762C040066EF9F /* Assemble First Stage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/cdboot/cdboot.s",
-			);
-			name = "Assemble First Stage";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/cdboot",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "nasm ${SCRIPT_INPUT_FILE_0} -o ${SCRIPT_OUTPUT_FILE_0}";
-			showEnvVarsInLog = 0;
-		};
-		1F3ED96318762C2D0066EF9F /* Combine Booter Components */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/boot",
-			);
-			name = "Combine Booter Components";
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/cdboot",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "dd if=${SCRIPT_INPUT_FILE_0} of=${SCRIPT_OUTPUT_FILE_0} conv=sync bs=2k seek=1";
-			showEnvVarsInLog = 0;
-		};
-		1F3ED96518762D820066EF9F /* Install Booter */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/cdboot",
-			);
-			name = "Install Booter";
-			outputPaths = (
-				"$(DSTROOT)/usr/standalone/i386/cdboot",
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "mkdir -p `dirname \"${SCRIPT_OUTPUT_FILE_0}\"`\ncp \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"";
 			showEnvVarsInLog = 0;
 		};
 		1F44659B1869F2F9008660CA /* Compile boot0 */ = {
@@ -1077,21 +1017,6 @@
 			isa = PBXTargetDependency;
 			target = 1F3029BE186A364A009F0246 /* boot1h */;
 			targetProxy = 1F057A88187B50C700E1C8E5 /* PBXContainerItemProxy */;
-		};
-		1F26D25F187739FA0069D655 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1F3029BE186A364A009F0246 /* boot1h */;
-			targetProxy = 1F26D25E187739FA0069D655 /* PBXContainerItemProxy */;
-		};
-		1F26D269187739FD0069D655 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1F4465971869F2F2008660CA /* boot0 */;
-			targetProxy = 1F26D268187739FD0069D655 /* PBXContainerItemProxy */;
-		};
-		1F3ED96018762BDF0066EF9F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1FDBEB211875FD2500D03F4F /* boot2 */;
-			targetProxy = 1F3ED95F18762BDF0066EF9F /* PBXContainerItemProxy */;
 		};
 		1FDBEB401875FD5800D03F4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1349,20 +1274,6 @@
 			name = Debug;
 		};
 		1F3029C1186A364A009F0246 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		1F3ED95418762BD40066EF9F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		1F3ED95518762BD40066EF9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1843,15 +1754,6 @@
 			buildConfigurations = (
 				1F3029C0186A364A009F0246 /* Debug */,
 				1F3029C1186A364A009F0246 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1F3ED95E18762BD40066EF9F /* Build configuration list for PBXAggregateTarget "cdboot" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1F3ED95418762BD40066EF9F /* Debug */,
-				1F3ED95518762BD40066EF9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
