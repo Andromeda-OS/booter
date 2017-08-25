@@ -768,7 +768,7 @@
 			);
 			name = "Compile CD-ROM Boot Loader";
 			outputPaths = (
-				"$(DSTROOT)/usr/local/standalone/i386/cdboot",
+				"$(DSTROOT)/usr/standalone/i386/cdboot",
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
