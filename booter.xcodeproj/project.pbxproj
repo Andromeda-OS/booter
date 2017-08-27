@@ -106,7 +106,7 @@
 		1F7F992C1875C5E000752D3F /* namespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7F992B1875C5E000752D3F /* namespace.h */; };
 		1F85B4381C72B88500C544F7 /* random.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F85B4371C72B88500C544F7 /* random.c */; };
 		1FA4704E18723455008DA9B3 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704418723455008DA9B3 /* error.c */; };
-		1FA4704F18723455008DA9B3 /* libsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4704518723455008DA9B3 /* libsa.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1FA4704F18723455008DA9B3 /* libsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4704518723455008DA9B3 /* libsa.h */; };
 		1FA4705018723455008DA9B3 /* memory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA4704618723455008DA9B3 /* memory.h */; };
 		1FA4705118723455008DA9B3 /* prf.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704718723455008DA9B3 /* prf.c */; };
 		1FA4705218723455008DA9B3 /* printf.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4704818723455008DA9B3 /* printf.c */; };
