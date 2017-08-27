@@ -51,7 +51,7 @@
 #define kCDROMPromptKey     "CD-ROM Prompt"
 #define kCDROMOptionKey     "CD-ROM Option Key"
 
-#define kDefaultKernel      "mach_kernel"
+#define kDefaultKernel      "System/Library/Kernels/kernel"
 
 /*
  * Flags to the booter or kernel
