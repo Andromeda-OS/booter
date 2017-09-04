@@ -2,7 +2,7 @@
  * Copyright (c) 1999-2003 Apple Computer, Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
- * 
+ *
  * Portions Copyright (c) 1999-2003 Apple Computer, Inc.  All Rights
  * Reserved.  This file contains Original Code and/or Modifications of
  * Original Code as defined in and that are subject to the Apple Public
@@ -10,7 +10,7 @@
  * except in compliance with the License.  Please obtain a copy of the
  * License at http://www.apple.com/publicsource and read it before using
  * this file.
- * 
+ *
  * The Original Code and all software distributed under the License are
  * distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY KIND, EITHER
  * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
@@ -18,7 +18,7 @@
  * FITNESS FOR A PARTICULAR PURPOSE OR NON- INFRINGEMENT.  Please see the
  * License for the specific language governing rights and limitations
  * under the License.
- * 
+ *
  * @APPLE_LICENSE_HEADER_END@
  */
 /* 
@@ -32,8 +32,8 @@
 /*
  *          INTEL CORPORATION PROPRIETARY INFORMATION
  *
- *  This software is supplied under the terms of a license  agreement or 
- *  nondisclosure agreement with Intel Corporation and may not be copied 
+ *  This software is supplied under the terms of a license  agreement or
+ *  nondisclosure agreement with Intel Corporation and may not be copied
  *  nor disclosed except in accordance with the terms of that agreement.
  *
  *  Copyright 1988, 1989 by Intel Corporation
@@ -43,7 +43,7 @@
  * Copyright 1993 NeXT Computer, Inc.
  * All rights reserved.
  */
- 
+
 /*
  * Completely reworked by Sam Streeper (sam_s@NeXT.com)
  * Reworked again by Curtis Galloway (galloway@NeXT.com)
@@ -87,13 +87,13 @@ static BOOL gUnloadPXEOnExit = 0;
 
 static void zeroBSS()
 {
-    extern char bss_begin asm("section$start$__DATA$__bss");
-    extern char bss_end asm("section$end$__DATA$__bss");
-    extern char common_begin asm("section$start$__DATA$__common");
-    extern char common_end asm("section$end$__DATA$__common");
+	extern char bss_begin asm("section$start$__DATA$__bss");
+	extern char bss_end asm("section$end$__DATA$__bss");
+	extern char common_begin asm("section$start$__DATA$__common");
+	extern char common_end asm("section$end$__DATA$__common");
 
-    bzero(&bss_begin, (&bss_end - &bss_begin));
-    bzero(&common_begin, (&common_end - &common_begin));
+	bzero(&bss_begin, (&bss_end - &bss_begin));
+	bzero(&common_begin, (&common_end - &common_begin));
 }
 
 //==========================================================================
@@ -101,9 +101,9 @@ static void zeroBSS()
 
 static void malloc_error(char *addr, size_t size)
 {
-    printf("\nMemory allocation error (0x%x, 0x%x)\n",
-           (unsigned)addr, (unsigned)size);
-    asm volatile ("hlt");
+	printf("\nMemory allocation error (0x%x, 0x%x)\n",
+		   (unsigned)addr, (unsigned)size);
+	asm volatile ("hlt");
 }
 
 //==========================================================================
@@ -111,88 +111,88 @@ static void malloc_error(char *addr, size_t size)
 
 static int ExecKernel(void *binary)
 {
-    entry_t                   kernelEntry;
-    int                       ret;
-    BOOL                      bootGraphics;
+	entry_t                   kernelEntry;
+	int                       ret;
+	BOOL                      bootGraphics;
 
-    bootArgs->kaddr = bootArgs->ksize = 0;
+	bootArgs->kaddr = bootArgs->ksize = 0;
 
-    ret = DecodeKernel(binary,
-                       &kernelEntry,
-                       (char **) &bootArgs->kaddr,
-                       (int *)&bootArgs->ksize );
+	ret = DecodeKernel(binary,
+					   &kernelEntry,
+					   (char **) &bootArgs->kaddr,
+					   (int *)&bootArgs->ksize );
 
-    if ( ret != 0 )
-        return ret;
+	if ( ret != 0 )
+		return ret;
 
-    // Reserve space for boot args
-    reserveKernBootStruct();
+	// Reserve space for boot args
+	reserveKernBootStruct();
 
-    // Load boot drivers from the specifed root path.
+	// Load boot drivers from the specifed root path.
 
-    if (!gHaveKernelCache) {
+	if (!gHaveKernelCache) {
 #if DEBUG
-        printf("Loading drivers...\n");
+		printf("Loading drivers...\n");
 #endif
-          LoadDrivers("/");
-    }
+		LoadDrivers("/");
+	}
 
-    clearActivityIndicator();
+	clearActivityIndicator();
 
-    if (gErrors) {
-        printf("Errors encountered while starting up the computer.\n");
-        printf("Pausing %d seconds...\n", kBootErrorTimeout);
-        sleep(kBootErrorTimeout);
-    }
+	if (gErrors) {
+		printf("Errors encountered while starting up the computer.\n");
+		printf("Pausing %d seconds...\n", kBootErrorTimeout);
+		sleep(kBootErrorTimeout);
+	}
 
-    printf("Starting Darwin/x86");
+	printf("Starting Darwin/x86");
 
-    // Cleanup the PXE base code.
+	// Cleanup the PXE base code.
 
-    if ( (gBootFileType == kNetworkDeviceType) && gUnloadPXEOnExit ) {
+	if ( (gBootFileType == kNetworkDeviceType) && gUnloadPXEOnExit ) {
 		if ( (ret = nbpUnloadBaseCode()) != nbpStatusSuccess )
-        {
-        	printf("nbpUnloadBaseCode error %d\n", (int) ret);
-            sleep(2);
-        }
-    }
+		{
+			printf("nbpUnloadBaseCode error %d\n", (int) ret);
+			sleep(2);
+		}
+	}
 
-    // Unless Boot Graphics = No, Always switch to graphics mode
-    // just before starting the kernel.
+	// Unless Boot Graphics = No, Always switch to graphics mode
+	// just before starting the kernel.
 
-    if (!getBoolForKey(kBootGraphicsKey, &bootGraphics)) {
-        bootGraphics = YES;
-    }
+	if (!getBoolForKey(kBootGraphicsKey, &bootGraphics)) {
+		bootGraphics = YES;
+	}
 
-    if (bootGraphics) {
-        if (bootArgs->Video.v_display == VGA_TEXT_MODE) {
-            // If we were in text mode, switch to graphics mode.
-            // This will draw the boot graphics unless we are in
-            // verbose mode.
-            setVideoMode( GRAPHICS_MODE );
-        } else {
-            // If we were already in graphics mode, clear the screen.
-            drawBootGraphics();
-        }
-    } else {
-        // Always set text mode to initialize video fields
-        // in the boot args structure.
-        setVideoMode( VGA_TEXT_MODE );
-        setCursorType( kCursorTypeHidden );
-    }
+	if (bootGraphics) {
+		if (bootArgs->Video.v_display == VGA_TEXT_MODE) {
+			// If we were in text mode, switch to graphics mode.
+			// This will draw the boot graphics unless we are in
+			// verbose mode.
+			setVideoMode( GRAPHICS_MODE );
+		} else {
+			// If we were already in graphics mode, clear the screen.
+			drawBootGraphics();
+		}
+	} else {
+		// Always set text mode to initialize video fields
+		// in the boot args structure.
+		setVideoMode( VGA_TEXT_MODE );
+		setCursorType( kCursorTypeHidden );
+	}
 
-    finalizeBootStruct();
+	finalizeBootStruct();
 
-    // Jump to kernel's entry point. There's no going back now.
+	// Jump to kernel's entry point. There's no going back now.
 
 #if DEBUG
-    printf("calling startprog()...\n");
+	printf("calling startprog()...\n");
 #endif
-    startprog( kernelEntry, bootArgs );
+	startprog( kernelEntry, bootArgs );
 
-    // Not reached
+	// Not reached
 
-    return 0;
+	return 0;
 }
 
 //==========================================================================
@@ -200,16 +200,16 @@ static int ExecKernel(void *binary)
 
 static void scanHardware()
 {
-    extern int  ReadPCIBusInfo(PCI_bus_info_t *);
-    extern void PCI_Bus_Init(PCI_bus_info_t *);
+	extern int  ReadPCIBusInfo(PCI_bus_info_t *);
+	extern void PCI_Bus_Init(PCI_bus_info_t *);
 
-    ReadPCIBusInfo( &bootInfo->pciInfo );
-    
-    //
-    // Initialize PCI matching support in the booter.
-    // Not used, commented out to minimize code size.
-    //
-    // PCI_Bus_Init( &bootInfo->pciInfo );
+	ReadPCIBusInfo( &bootInfo->pciInfo );
+
+	//
+	// Initialize PCI matching support in the booter.
+	// Not used, commented out to minimize code size.
+	//
+	// PCI_Bus_Init( &bootInfo->pciInfo );
 }
 
 //==========================================================================
@@ -228,195 +228,195 @@ static void scanHardware()
 
 void boot(int biosdev)
 {
-    int      status;
-    char     *bootFile;
-    unsigned long adler32;
-    BOOL     quiet;
-    BOOL     firstRun = YES;
-    BVRef    bvChain;
+	int      status;
+	char     *bootFile;
+	unsigned long adler32;
+	BOOL     quiet;
+	BOOL     firstRun = YES;
+	BVRef    bvChain;
 
-    zeroBSS();
+	zeroBSS();
 
-    // Initialize malloc
-    malloc_init(0, 0, 0, malloc_error);
+	// Initialize malloc
+	malloc_init(0, 0, 0, malloc_error);
 
-    // Enable A20 gate before accessing memory above 1Mb.
+	// Enable A20 gate before accessing memory above 1Mb.
 
-    enableA20();
+	enableA20();
 
-    // Set reminder to unload the PXE base code. Neglect to unload
-    // the base code will result in a hang or kernel panic.
+	// Set reminder to unload the PXE base code. Neglect to unload
+	// the base code will result in a hang or kernel panic.
 
-    gUnloadPXEOnExit = 1;
+	gUnloadPXEOnExit = 1;
 
-    // Record the device that the booter was loaded from.
+	// Record the device that the booter was loaded from.
 
-    gBIOSDev = biosdev & kBIOSDevMask;
+	gBIOSDev = biosdev & kBIOSDevMask;
 
-    // Initialize boot info structure.
+	// Initialize boot info structure.
 
-    initKernBootStruct( gBIOSDev );
+	initKernBootStruct( gBIOSDev );
 
-    // Setup VGA text mode.
-    // Not sure if it is safe to call setVideoMode() before the
-    // config table has been loaded. Call video_mode() instead.
+	// Setup VGA text mode.
+	// Not sure if it is safe to call setVideoMode() before the
+	// config table has been loaded. Call video_mode() instead.
 
 #if DEBUG
-    printf("before video_mode\n");
+	printf("before video_mode\n");
 #endif
-    video_mode( 2 );  // 80x25 mono text mode.
+	video_mode( 2 );  // 80x25 mono text mode.
 #if DEBUG
-    printf("after video_mode\n");
+	printf("after video_mode\n");
 #endif
 
-    // Check to see that this hardware is supported.
-    status = checkForSupportedHardware();
-    if (status != 0) {
-        stop("This hardware configuration is not supported by Darwin/x86. (%d)", status);
-    }
+	// Check to see that this hardware is supported.
+	status = checkForSupportedHardware();
+	if (status != 0) {
+		stop("This hardware configuration is not supported by Darwin/x86. (%d)", status);
+	}
 
-    // Scan hardware configuration.
-    scanHardware();
+	// Scan hardware configuration.
+	scanHardware();
 
-    // First get info for boot volume.
-    bvChain = scanBootVolumes(gBIOSDev, 0);
+	// First get info for boot volume.
+	bvChain = scanBootVolumes(gBIOSDev, 0);
 
-    // Record default boot device.
-    gBootVolume = selectBootVolume(bvChain);
-    bootInfo->kernDev = MAKEKERNDEV(gBIOSDev,
-                                    BIOS_DEV_UNIT(gBootVolume),
-                                    gBootVolume->part_no );
+	// Record default boot device.
+	gBootVolume = selectBootVolume(bvChain);
+	bootInfo->kernDev = MAKEKERNDEV(gBIOSDev,
+									BIOS_DEV_UNIT(gBootVolume),
+									gBootVolume->part_no );
 
-    // Load default config file from boot device.
-    status = loadSystemConfig(0, 0);
+	// Load default config file from boot device.
+	status = loadSystemConfig(0, 0);
 
-    if ( getBoolForKey( kQuietBootKey, &quiet ) && quiet ) {
-        gBootMode |= kBootModeQuiet;
-    }
+	if ( getBoolForKey( kQuietBootKey, &quiet ) && quiet ) {
+		gBootMode |= kBootModeQuiet;
+	}
 
-    // Parse args, load and start kernel.
+	// Parse args, load and start kernel.
 
-    while (1)
-    {
-        const char *val;
-        int len;
-        int trycache;
-        long flags, cachetime, kerneltime, exttime;
-        int ret = -1;
-        void *binary = (void *)kLoadAddr;
+	while (1)
+	{
+		const char *val;
+		int len;
+		int trycache;
+		long flags, cachetime, kerneltime, exttime;
+		int ret = -1;
+		void *binary = (void *)kLoadAddr;
 
-        // Initialize globals.
+		// Initialize globals.
 
-        sysConfigValid = 0;
-        gErrors        = 0;
+		sysConfigValid = 0;
+		gErrors        = 0;
 
-        status = getBootOptions(firstRun);
-        firstRun = NO;
-        if (status == -1) continue;
+		status = getBootOptions(firstRun);
+		firstRun = NO;
+		if (status == -1) continue;
 
-        status = processBootOptions();
-        if ( status ==  1 ) break;
-        if ( status == -1 ) continue;
+		status = processBootOptions();
+		if ( status ==  1 ) break;
+		if ( status == -1 ) continue;
 
-        // Found and loaded a config file. Proceed with boot.
+		// Found and loaded a config file. Proceed with boot.
 
 
-        // Reset cache name.
-        bzero(gCacheNameAdler + 64, sizeof(gCacheNameAdler) - 64);
+		// Reset cache name.
+		bzero(gCacheNameAdler + 64, sizeof(gCacheNameAdler) - 64);
 
-        sprintf(gCacheNameAdler + 64, "%s,%s", gRootDevice, bootInfo->bootFile);
+		sprintf(gCacheNameAdler + 64, "%s,%s", gRootDevice, bootInfo->bootFile);
 
-        adler32 = Adler32((unsigned char *)gCacheNameAdler, sizeof(gCacheNameAdler));
+		adler32 = Adler32((unsigned char *)gCacheNameAdler, sizeof(gCacheNameAdler));
 
-        if (getValueForKey(kKernelCacheKey, &val, &len) == YES) {
-            strlcpy(gBootKernelCacheFile, val, len+1);
-        } else {
-            sprintf(gBootKernelCacheFile, "%s.%08lX", kDefaultCachePath, adler32);
-        }
+		if (getValueForKey(kKernelCacheKey, &val, &len) == YES) {
+			strlcpy(gBootKernelCacheFile, val, len+1);
+		} else {
+			sprintf(gBootKernelCacheFile, "%s.%08lX", kDefaultCachePath, adler32);
+		}
 
-        // Check for cache file.
+		// Check for cache file.
 
-        trycache = (((gBootMode & kBootModeSafe) == 0) &&
-                    (gOverrideKernel == NO) &&
-                    (gBootFileType == kBlockDeviceType) &&
-                    (gMKextName[0] == '\0') &&
-                    (gBootKernelCacheFile[0] != '\0'));
+		trycache = (((gBootMode & kBootModeSafe) == 0) &&
+					(gOverrideKernel == NO) &&
+					(gBootFileType == kBlockDeviceType) &&
+					(gMKextName[0] == '\0') &&
+					(gBootKernelCacheFile[0] != '\0'));
 
-        printf("Loading Darwin/x86\n");
+		printf("Loading Darwin/x86\n");
 
-        if (trycache) do {
-      
-            // if we haven't found the kernel yet, don't use the cache
-            ret = GetFileInfo(NULL, bootInfo->bootFile, &flags, &kerneltime);
-            if ((ret != 0) || ((flags & kFileTypeMask) != kFileTypeFlat)) {
-                trycache = 0;
-                break;
-            }
-            ret = GetFileInfo(NULL, gBootKernelCacheFile, &flags, &cachetime);
-            if ((ret != 0) || ((flags & kFileTypeMask) != kFileTypeFlat)
-                || (cachetime < kerneltime)) {
-                trycache = 0;
-                break;
-            }
-            ret = GetFileInfo("/System/Library/", "Extensions", &flags, &exttime);
-            if ((ret == 0) && ((flags & kFileTypeMask) == kFileTypeDirectory)
-                && (cachetime < exttime)) {
-                trycache = 0;
-                break;
-            }
-            if (kerneltime > exttime) {
-                exttime = kerneltime;
-            }
-            if (cachetime != (exttime + 1)) {
-                trycache = 0;
-                break;
-            }
-        } while (0);
+		if (trycache) do {
 
-        do {
-            if (trycache) {
-                bootFile = gBootKernelCacheFile;
-                verbose("Loading kernel cache %s\n", bootFile);
-                ret = LoadFile(bootFile);
-                binary = (void *)kLoadAddr;
-                if (ret >= 0) {
-                    break;
-                }
-            }
-            bootFile = bootInfo->bootFile;
-            verbose("Loading kernel %s\n", bootFile);
-            ret = LoadThinFatFile(bootFile, &binary);
-        } while (0);
+			// if we haven't found the kernel yet, don't use the cache
+			ret = GetFileInfo(NULL, bootInfo->bootFile, &flags, &kerneltime);
+			if ((ret != 0) || ((flags & kFileTypeMask) != kFileTypeFlat)) {
+				trycache = 0;
+				break;
+			}
+			ret = GetFileInfo(NULL, gBootKernelCacheFile, &flags, &cachetime);
+			if ((ret != 0) || ((flags & kFileTypeMask) != kFileTypeFlat)
+				|| (cachetime < kerneltime)) {
+				trycache = 0;
+				break;
+			}
+			ret = GetFileInfo("/System/Library/", "Extensions", &flags, &exttime);
+			if ((ret == 0) && ((flags & kFileTypeMask) == kFileTypeDirectory)
+				&& (cachetime < exttime)) {
+				trycache = 0;
+				break;
+			}
+			if (kerneltime > exttime) {
+				exttime = kerneltime;
+			}
+			if (cachetime != (exttime + 1)) {
+				trycache = 0;
+				break;
+			}
+		} while (0);
 
-        clearActivityIndicator();
+		do {
+			if (trycache) {
+				bootFile = gBootKernelCacheFile;
+				verbose("Loading kernel cache %s\n", bootFile);
+				ret = LoadFile(bootFile);
+				binary = (void *)kLoadAddr;
+				if (ret >= 0) {
+					break;
+				}
+			}
+			bootFile = bootInfo->bootFile;
+			verbose("Loading kernel %s\n", bootFile);
+			ret = LoadThinFatFile(bootFile, &binary);
+		} while (0);
+
+		clearActivityIndicator();
 #if DEBUG
-        printf("Pausing...\n");
-        sleep(8);
+		printf("Pausing...\n");
+		sleep(8);
 #endif
 
-        if (ret < 0) {
-            error("Can't find %s\n", bootFile);
+		if (ret < 0) {
+			error("Can't find %s\n", bootFile);
 
-            if ( gBootFileType == kNetworkDeviceType )
-            {
-                // Return control back to PXE. Don't unload PXE base code.
-                gUnloadPXEOnExit = 0;
-                break;
-            }
-        } else {
-            /* Won't return if successful. */
-            ret = ExecKernel(binary);
-            verbose("ExecKernel() returned %d\n", ret);
-        }
-        
-        verbose("Cannot exec kernel, trying again...\n");
-        sleep(8);
+			if ( gBootFileType == kNetworkDeviceType )
+			{
+				// Return control back to PXE. Don't unload PXE base code.
+				gUnloadPXEOnExit = 0;
+				break;
+			}
+		} else {
+			/* Won't return if successful. */
+			ret = ExecKernel(binary);
+			verbose("ExecKernel() returned %d\n", ret);
+		}
 
-    } /* while(1) */
-    
-    if ((gBootFileType == kNetworkDeviceType) && gUnloadPXEOnExit) {
-	nbpUnloadBaseCode();
-    }
+		verbose("Cannot exec kernel, trying again...\n");
+		sleep(8);
+
+	} /* while(1) */
+
+	if ((gBootFileType == kNetworkDeviceType) && gUnloadPXEOnExit) {
+		nbpUnloadBaseCode();
+	}
 }
 
 #define BASE 65521L /* largest prime smaller than 65536 */
@@ -431,28 +431,28 @@ void boot(int biosdev)
 
 unsigned long Adler32(unsigned char *buf, long len)
 {
-    unsigned long s1 = 1; // adler & 0xffff;
-    unsigned long s2 = 0; // (adler >> 16) & 0xffff;
-    unsigned long result;
-    int k;
+	unsigned long s1 = 1; // adler & 0xffff;
+	unsigned long s2 = 0; // (adler >> 16) & 0xffff;
+	unsigned long result;
+	int k;
 
-    while (len > 0) {
-        k = len < NMAX ? len : NMAX;
-        len -= k;
-        while (k >= 16) {
-            DO16(buf);
-            buf += 16;
-            k -= 16;
-        }
-        if (k != 0) do {
-            s1 += *buf++;
-            s2 += s1;
-        } while (--k);
-        s1 %= BASE;
-        s2 %= BASE;
-    }
-    result = (s2 << 16) | s1;
-    return OSSwapHostToBigInt32(result);
+	while (len > 0) {
+		k = len < NMAX ? len : NMAX;
+		len -= k;
+		while (k >= 16) {
+			DO16(buf);
+			buf += 16;
+			k -= 16;
+		}
+		if (k != 0) do {
+			s1 += *buf++;
+			s2 += s1;
+		} while (--k);
+		s1 %= BASE;
+		s2 %= BASE;
+	}
+	result = (s2 << 16) | s1;
+	return OSSwapHostToBigInt32(result);
 }
 
 
