@@ -107,6 +107,37 @@ static void malloc_error(char *addr, size_t size)
 }
 
 //==========================================================================
+// rebasePicIrqs - Configure the PIC to the state that xnu expects
+
+#define PIC_WAIT() asm volatile("jmp 1f; 1: jmp 2f; 2:")
+static void rebasePicIrqs(void) {
+	const unsigned short PIC1 = 0x20, PIC1_COMMAND = PIC1;
+	const unsigned short PIC1_OFFSET = 0xD0;
+	const unsigned short PIC1_DATA = PIC1 + 1;
+	const unsigned short PIC2 = 0xA0, PIC2_COMMAND = PIC2;
+	const unsigned short PIC2_OFFSET = PIC1_OFFSET;
+	const unsigned short PIC2_DATA = PIC2 + 1;
+
+	const unsigned char ICW1_ICW4 = 0x01, ICW1_INIT = 0x10;
+
+	outb(PIC1_COMMAND, ICW1_INIT | ICW1_ICW4); PIC_WAIT();
+	outb(PIC2_COMMAND, ICW1_INIT | ICW1_ICW4); PIC_WAIT();
+
+	// Remap
+	outb(PIC1_DATA, PIC1_OFFSET); PIC_WAIT();
+	outb(PIC2_DATA, PIC2_OFFSET); PIC_WAIT();
+
+	// Cascade identity with slave PIC at IRQ2
+	outb(PIC1_DATA, 0x04); PIC_WAIT();
+	outb(PIC2_DATA, 0x02); PIC_WAIT();
+
+	// Request 8086 mode on each PIC
+	outb(PIC1_DATA, 0x01); PIC_WAIT();
+	outb(PIC2_DATA, 0x01); PIC_WAIT();
+}
+#undef PIC_WAIT
+
+//==========================================================================
 // execKernel - Load the kernel image (mach-o) and jump to its entry point.
 
 static int ExecKernel(void *binary)
@@ -182,6 +213,7 @@ static int ExecKernel(void *binary)
 	}
 
 	finalizeBootStruct();
+	rebasePicIrqs();
 
 	// Jump to kernel's entry point. There's no going back now.
 
