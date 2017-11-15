@@ -95,12 +95,12 @@ enum {
 /*
  * graphics.c
  */
-extern void printVBEInfo();
-extern void printVBEModeInfo();
+extern void printVBEInfo(void);
+extern void printVBEModeInfo(void);
 extern void setVideoMode(int mode);
-extern int  getVideoMode();
-extern void spinActivityIndicator();
-extern void clearActivityIndicator();
+extern int  getVideoMode(void);
+extern void spinActivityIndicator(void);
+extern void clearActivityIndicator(void);
 extern void drawColorRectangle( unsigned short x,
                          unsigned short y,
                          unsigned short width,
@@ -130,7 +130,7 @@ extern long DecodeKernel(void *binary, entry_t *rentry, char **raddr, int *rsize
  * options.c
  */
 extern int  getBootOptions(BOOL firstRun);
-extern int  processBootOptions();
+extern int  processBootOptions(void);
 
 /*
  * lzss.c

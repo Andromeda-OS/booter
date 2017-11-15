@@ -87,7 +87,7 @@ struct DiskBVMap {
 static struct DiskBVMap * gDiskBVMap  = NULL;
 static struct disk_blk0 * gBootSector = NULL;
 
-extern void spinActivityIndicator();
+extern void spinActivityIndicator(void);
 
 static void getVolumeDescription(BVRef bvr, char * str, long strMaxLen);
 

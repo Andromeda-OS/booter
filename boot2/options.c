@@ -39,7 +39,7 @@ enum {
 	kScreenLastRow = 24
 };
 
-static void showHelp();
+static void showHelp(void);
 
 //==========================================================================
 

@@ -79,7 +79,7 @@ extern unsigned long long strtouq(const char *nptr, char ** endptr, int base);
 /*
  * prf.c
  */
-extern void prf(const char * fmt, va_list ap, void (*putfn_p)(),
+extern void prf(const char * fmt, va_list ap, void (*putfn_p)(int, void *),
                 void * putfn_arg);
 
 /*

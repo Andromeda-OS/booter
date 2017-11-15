@@ -68,8 +68,8 @@ extern void   clearScreenRows(int y1, int y2);
 extern void   setActiveDisplayPage( int page );
 extern unsigned long getMemoryMap(struct MemoryRange * rangeArray, unsigned long maxRangeCount,
                                   unsigned long * conMemSizePtr, unsigned long * extMemSizePtr);
-extern unsigned long getExtendedMemorySize();
-extern unsigned long getConventionalMemorySize();
+extern unsigned long getExtendedMemorySize(void);
+extern unsigned long getConventionalMemorySize(void);
 extern void   sleep(int n);
 
 /* bootstruct.c */
@@ -120,11 +120,11 @@ long AllocateMemoryRange(char * rangeName, long start, long length, long type);
 
 /* misc.c */
 extern void   enableA20(void);
-extern int    checkForSupportedHardware();
+extern int    checkForSupportedHardware(void);
 extern void   getPlatformName(char *nameBuf);
 
 /* nbp.c */
-extern uint32_t nbpUnloadBaseCode();
+extern uint32_t nbpUnloadBaseCode(void);
 extern BVRef  nbpScanBootVolumes(int biosdev, int *count);
 
 /* stringTable.c */

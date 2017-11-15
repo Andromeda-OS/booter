@@ -217,7 +217,7 @@ long HFSInitPartition(CICell ih)
 
     // Get the Catalog BTree node size.
     extent     = &gHFSPlus->catalogFile.extents;
-    extentSize = SWAP_BE64(gHFSPlus->catalogFile.logicalSize);
+    extentSize = (long)SWAP_BE64(gHFSPlus->catalogFile.logicalSize);
     extentFile = kHFSCatalogFileID;
 
     ReadExtent(extent, extentSize, extentFile, 0, 256,
