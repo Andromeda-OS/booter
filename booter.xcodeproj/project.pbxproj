@@ -1359,8 +1359,6 @@
 					"$(SRCROOT)/libsa",
 					"$(SRCROOT)/libsaio",
 					"$(SRCROOT)/rcz",
-					"$(XNU_INSTALL_BASE)/usr/include",
-					"$(XNU_INSTALL_BASE)/System/Library/Frameworks/Kernel.framework/Headers",
 					"$(inherited)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -1425,8 +1423,6 @@
 					"$(SRCROOT)/libsa",
 					"$(SRCROOT)/libsaio",
 					"$(SRCROOT)/rcz",
-					"$(XNU_INSTALL_BASE)/usr/include",
-					"$(XNU_INSTALL_BASE)/System/Library/Frameworks/Kernel.framework/Headers",
 					"$(inherited)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -1689,6 +1685,7 @@
 		1FE6F358186920A8003ED90F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ADDITIONAL_SDKS = "$(RC_BuildRoot)";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1715,13 +1712,13 @@
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				WARNING_CFLAGS = "-Wno-unused-function";
-				XNU_INSTALL_ROOT = "$(PROJECT_TEMP_ROOT)/xnu";
 			};
 			name = Debug;
 		};
 		1FE6F359186920A8003ED90F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ADDITIONAL_SDKS = "$(RC_BuildRoot)";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1746,7 +1743,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				WARNING_CFLAGS = "-Wno-unused-function";
-				XNU_INSTALL_ROOT = "$(DSTROOT)";
 			};
 			name = Release;
 		};
